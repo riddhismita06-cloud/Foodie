@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Success - hide error and show confirmation
         hideError();
-        alert('Thank you for subscribing!\nYou will receive updates at: ' + email);
+        alert(t('newsletter.success', 'Thank you for subscribing!\nYou will receive updates at: {email}').replace('{email}', email));
         emailInput.value = '';
         
         // TODO: Add your backend API call here

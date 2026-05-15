@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const mobile = document.getElementById('partnerMobile').value.trim();
 
             if (!name || !city || !mobile) {
-                alert('Please fill in all required fields.');
+                alert(t('ride.form.requiredFields', 'Please fill in all required fields.'));
                 return;
             }
 
             // Basic mobile number validation for 10 digits
             const mobileRegex = /^[0-9]{10}$/;
             if (!mobileRegex.test(mobile)) {
-                alert('Please enter a valid 10-digit mobile number.');
+                alert(t('ride.form.invalidMobile', 'Please enter a valid 10-digit mobile number.'));
                 return;
             }
 
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verifyOtpBtn.addEventListener('click', () => {
             const entered = Array.from(otpInputs).map(i => i.value).join('');
             if (entered.length < 6) {
-                otpError.textContent = 'Please enter all 6 digits.';
+                otpError.textContent = t('ride.otp.required', 'Please enter all 6 digits.');
                 otpError.style.display = 'block';
                 return;
             }
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 otpStep.style.display = 'none';
                 successStep.style.display = 'block';
             } else {
-                otpError.textContent = 'Incorrect OTP. Please try again.';
+                otpError.textContent = t('ride.otp.incorrect', 'Incorrect OTP. Please try again.');
                 otpError.style.display = 'block';
                 otpInputs.forEach(i => i.value = '');
                 otpInputs[0].focus();
@@ -135,11 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (theme === 'dark') {
                 icon.classList.replace('fa-moon', 'fa-sun');
                 toggle.classList.add('dark');
-                if (label) label.textContent = 'Light Mode ☀';
+                if (label) label.textContent = t('ride.theme.lightMode', 'Light Mode ☀');
             } else {
                 icon.classList.replace('fa-sun', 'fa-moon');
                 toggle.classList.remove('dark');
-                if (label) label.textContent = 'Dark Mode 🌙';
+                if (label) label.textContent = t('ride.theme.darkMode', 'Dark Mode 🌙');
             }
             icon.classList.add('rotate-icon');
             setTimeout(() => icon.classList.remove('rotate-icon'), 600);

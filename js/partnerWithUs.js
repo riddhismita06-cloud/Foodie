@@ -161,11 +161,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Show user-friendly error message
             showFieldError(
                 form.querySelector("[name='email']"),
-                "Submission failed. Please check your connection and try again."
+                t('partner.submitFailedField', 'Submission failed. Please check your connection and try again.')
             );
 
             // Show toast notification
-            showErrorToast('Failed to submit partnership request. Please try again.');
+            showErrorToast(t('partner.submitFailedToast', 'Failed to submit partnership request. Please try again.'));
         }
     });
 
