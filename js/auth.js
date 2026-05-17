@@ -106,12 +106,12 @@ function switchForm(formType) {
     if (loginForm) loginForm.classList.remove("active");
     if (signupForm) signupForm.classList.add("active");
     if (heroEmoji) heroEmoji.innerHTML = '<img src="../imgs/pancakes.webp" alt="Food" style="width: 150px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">';
-    if (heroTagline) heroTagline.textContent = "Join Foodie today!";
+    if (heroTagline) heroTagline.textContent = t('auth.signupTagline', 'Join Foodie today!');
   } else {
     if (signupForm) signupForm.classList.remove("active");
     if (loginForm) loginForm.classList.add("active");
     if (heroEmoji) heroEmoji.innerHTML = '<img src="../imgs/pizza.webp" alt="Food" style="width: 150px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">';
-    if (heroTagline) heroTagline.textContent = "Your favorite meals are just a click away.";
+    if (heroTagline) heroTagline.textContent = t('auth.loginTagline', 'Your favorite meals are just a click away.');
   }
 }
 window.switchForm = switchForm;
@@ -126,13 +126,13 @@ function handleSignup(event) {
 
   const users = JSON.parse(localStorage.getItem('foodie_users') || '[]');
   if (users.find(u => u.email === email || u.phone === phone)) {
-    showToast("User with this email or phone already exists!", "error");
+    showToast(t('auth.userExists', 'User with this email or phone already exists!'), "error");
     return;
   }
 
   users.push({ name, email, phone, password });
   localStorage.setItem('foodie_users', JSON.stringify(users));
-  showToast("Registration successful! Please login.", "success");
+  showToast(t('auth.registrationSuccess', 'Registration successful! Please login.'), "success");
   switchForm('login');
 }
 window.handleSignup = handleSignup;
@@ -158,7 +158,7 @@ function toggleDemoMode(state) {
     regularFields.style.display = 'none';
     demoFields.style.display = 'block';
     passwordGroup.style.display = 'none';
-    loginBtn.textContent = 'Enter as Guest';
+    loginBtn.textContent = t('auth.guestLogin', 'Enter as Guest');
     
     // Remove required from hidden fields to prevent form submission errors
     if (loginEmail) loginEmail.removeAttribute('required');
@@ -168,7 +168,7 @@ function toggleDemoMode(state) {
     regularFields.style.display = 'block';
     demoFields.style.display = 'none';
     passwordGroup.style.display = 'block';
-    loginBtn.textContent = 'Sign In';
+    loginBtn.textContent = t('auth.signInButton', 'Sign In');
     
     // Restore required attributes
     if (loginEmail) loginEmail.setAttribute('required', 'required');
@@ -209,7 +209,7 @@ function handleLogin(event) {
   if (user) {
     loginUser(user);
   } else {
-    showToast("Invalid email or password!", "error");
+    showToast(t('auth.invalidCredentials', 'Invalid email or password!'), "error");
   }
 }
 window.handleLogin = handleLogin;
@@ -221,7 +221,7 @@ function loginUser(user) {
     phone: user.phone || '',
     picture: user.picture || '../imgs/profile1.webp'
   }));
-  showToast(`Welcome back, ${user.name}!`, "success");
+  showToast(t('auth.welcomeBack', 'Welcome back, {name}!').replace('{name}', user.name), "success");
   setTimeout(() => {
     window.location.href = './index.html';
   }, 1000);
@@ -233,7 +233,7 @@ function handleGoogleResponse(response) {
     const userData = decodeJwtResponse(response.credential);
     loginUser({ name: userData.name, email: userData.email, picture: userData.picture });
   } catch (error) {
-    showToast("Google Login failed. Please use regular login.", "error");
+    showToast(t('auth.googleLoginFailed', 'Google Login failed. Please use regular login.'), "error");
   }
 }
 

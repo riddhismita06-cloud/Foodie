@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Show loading state
-        setLoadingState(form, true, 'Submitting feedback...');
+        setLoadingState(form, true, t('feedback.submitting', 'Submitting feedback...'));
 
         try {
             // Submit feedback
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Success
             setLoadingState(form, false);
-            showSuccessToast('Thank you for your feedback! We appreciate your input.');
+            showSuccessToast(t('feedback.success', 'Thank you for your feedback! We appreciate your input.'));
             closeModal();
 
         } catch (error) {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // Show user-friendly error message
-            showErrorToast('Failed to submit feedback. Please try again or contact support.');
+            showErrorToast(t('feedback.submitFailed', 'Failed to submit feedback. Please try again or contact support.'));
 
             // Add retry button to form
             const submitBtn = form.querySelector('.submit-btn');
@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const retryBtn = document.createElement('button');
                 retryBtn.type = 'button';
                 retryBtn.className = 'retry-btn';
-                retryBtn.textContent = 'Retry Submission';
+                retryBtn.textContent = t('feedback.retryButton', 'Retry Submission');
                 retryBtn.onclick = () => {
                     retryBtn.remove();
                     form.dispatchEvent(new Event('submit'));

@@ -139,7 +139,7 @@
 
     const renderRestaurantList = (restaurants, userLocation) => {
         if (!restaurants.length) {
-            listElement.innerHTML = '<li class="nearby-live-empty">No nearby restaurants with ratings were found in this area.</li>';
+            listElement.innerHTML = `<li class="nearby-live-empty">${t('nearby.noRatings', 'No nearby restaurants with ratings were found in this area.')}</li>`;
             return;
         }
 
@@ -153,18 +153,18 @@
                 ? place.opening_hours.open_now
                 : null;
 
-            let availabilityText = 'Hours unavailable';
+            let availabilityText = t('nearby.hoursUnavailable', 'Hours unavailable');
             let availabilityClass = 'unknown';
 
             if (openNow === true) {
-                availabilityText = 'Open now';
+                availabilityText = t('nearby.openNow', 'Open now');
                 availabilityClass = 'open';
             } else if (openNow === false) {
-                availabilityText = 'Closed';
+                availabilityText = t('nearby.closed', 'Closed');
                 availabilityClass = 'closed';
             }
 
-            const address = place.vicinity || place.formatted_address || 'Address unavailable';
+            const address = place.vicinity || place.formatted_address || t('nearby.addressUnavailable', 'Address unavailable');
 
             return `
                 <li class="nearby-live-item">
@@ -192,18 +192,15 @@
         const marker = new google.maps.Marker({
             map,
             position: place.geometry.location,
-            title: place.name,
-            label: `${index + 1}`
-        });
-
+            title: place.name || t('nearby.restaurant', 'Restaurant'),
         marker.addListener('click', () => {
             const rating = typeof place.rating === 'number' ? place.rating.toFixed(1) : 'N/A';
             const address = place.vicinity || place.formatted_address || 'Address unavailable';
 
             infoWindow.setContent(`
                 <div class="nearby-map-info">
-                    <h4>${escapeHtml(place.name || 'Restaurant')}</h4>
-                    <p>Rating: ${rating}</p>
+                    <h4>${escapeHtml(place.name || t('nearby.restaurant', 'Restaurant'))}</h4>
+                    <p>${t('nearby.ratingLabel', 'Rating')}: ${rating}</p>
                     <p>${escapeHtml(address)}</p>
                 </div>
             `);
@@ -223,7 +220,7 @@
         userMarker = new google.maps.Marker({
             map,
             position: userLocation,
-            title: 'You are here',
+            title: t('nearby.youAreHere', 'You are here'),
             icon: {
                 path: google.maps.SymbolPath.CIRCLE,
                 scale: 8,
@@ -298,7 +295,7 @@
 
     const runNearbySearch = async () => {
         retryButton.disabled = true;
-        retryButton.textContent = 'Loading...';
+        retryButton.textContent = t('nearby.loading', 'Loading...');
 
         try {
             const apiKey = getMapsApiKey();
@@ -306,24 +303,24 @@
     mapElement.innerHTML = `
         <div class="nearby-fallback-ui">
             <i class="fa-solid fa-map-location-dot"></i>
-            <p>Location services are unavailable.</p>
-            <p class="nearby-fallback-hint">Please enable location or try again.</p>
+            <p>${t('nearby.locationUnavailable', 'Location services are unavailable.')}</p>
+            <p class="nearby-fallback-hint">${t('nearby.locationUnavailableHint', 'Please enable location or try again.')}</p>
         </div>`;
-    listElement.innerHTML = '<li class="nearby-live-empty">No nearby restaurants found. Try enabling location.</li>';
-    setStatus('Location services are unavailable. Please enable location or try again.', 'warning');
+    listElement.innerHTML = `<li class="nearby-live-empty">${t('nearby.noLocation', 'No nearby restaurants found. Try enabling location.')}</li>`;
+    setStatus(t('nearby.locationUnavailable', 'Location services are unavailable.'), 'warning');
     retryButton.disabled = false;
-    retryButton.textContent = 'Retry Location';
+    retryButton.textContent = t('nearby.retryLocation', 'Retry Location');
     return;
 }
             await loadGoogleMapsSdk(apiKey);
 
             let activeLocation = DEFAULT_LOCATION;
             try {
-                setStatus('Requesting your location permission...', 'info');
+                setStatus(t('nearby.requestingLocation', 'Requesting your location permission...'), 'info');
                 activeLocation = await requestUserLocation();
-                setStatus('Location found. Fetching top rated nearby restaurants...', 'info');
+                setStatus(t('nearby.locationFound', 'Location found. Fetching top rated nearby restaurants...'), 'info');
             } catch (geoError) {
-                setStatus('Location access unavailable. Showing top restaurants near default location.', 'warning');
+                setStatus(t('nearby.defaultLocationWarning', 'Location access unavailable. Showing top restaurants near default location.'), 'warning');
             }
 
             ensureMap(activeLocation);
@@ -333,17 +330,17 @@
             renderRestaurantList(restaurants, activeLocation);
 
             if (restaurants.length > 0) {
-                setStatus(`Showing ${restaurants.length} top rated restaurants near you.`, 'success');
+                setStatus(t('nearby.showingTop', 'Showing {count} top rated restaurants near you.').replace('{count}', restaurants.length), 'success');
             } else {
-                setStatus('No rated restaurants found in this area. Try retrying from a different location.', 'warning');
+                setStatus(t('nearby.noRated', 'No rated restaurants found in this area. Try retrying from a different location.'), 'warning');
             }
         } catch (error) {
             console.error('Nearby restaurants load error:', error);
-            listElement.innerHTML = '<li class="nearby-live-empty">Unable to load nearby restaurants right now. Please verify API key and internet connection.</li>';
-            setStatus('Google Maps request failed. Verify API key permissions for Maps JavaScript API and Places API.', 'error');
+            listElement.innerHTML = `<li class="nearby-live-empty">${t('nearby.loadFailed', 'Unable to load nearby restaurants right now. Please verify API key and internet connection.')}</li>`;
+            setStatus(t('nearby.apiFailed', 'Google Maps request failed. Verify API key permissions for Maps JavaScript API and Places API.'), 'error');
         } finally {
             retryButton.disabled = false;
-            retryButton.textContent = 'Retry Location';
+            retryButton.textContent = t('nearby.retryLocation', 'Retry Location');
         }
     };
 

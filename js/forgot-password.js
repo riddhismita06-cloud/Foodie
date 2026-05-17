@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert('Please enter a valid email address');
+      alert(t('forgotPassword.invalidEmail', 'Please enter a valid email address'));
       emailInput.focus();
       return;
     }
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function resendEmail() {
     const email = localStorage.getItem('resetEmail');
     if (email) {
-      alert(`Reset link resent to ${email}`);
+      alert(t('forgotPassword.resetLinkSent', 'Reset link resent to {email}').replace('{email}', email));
     }
   }
 

@@ -66,7 +66,7 @@ class I18n {
                 } catch (fallbackErr) {
                     if (errorLogger.log) errorLogger.log(fallbackErr, { operation: 'loadFallbackTranslations', fallbackLang: 'en' });
                     console.error("Critical: Could not load any translations:", fallbackErr);
-                    showErrorToast('Failed to load language translations. Some text may appear in English.');
+                    showErrorToast(t('i18n.loadFailed', 'Failed to load language translations. Some text may appear in English.'));
                 }
             }
         }
@@ -167,3 +167,4 @@ class I18n {
 
 // Global instance
 window.i18n = new I18n();
+window.t = (key, fallback = "") => window.i18n?.t(key, fallback) || fallback || key;

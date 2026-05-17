@@ -111,4 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
         icon?.classList.toggle("fa-xmark");
         icon?.classList.toggle("fa-bars");
     });
+
+    // ===== ACTIVE NAVIGATION LINK HIGHLIGHTING =====
+    function highlightActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.navList a, .mobile-menu a');
+        
+        navLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            const linkPage = href.split('/').pop();
+            
+            // Remove active class from all links
+            link.parentElement?.classList.remove('active');
+            
+            // Add active class to matching link
+            if (linkPage === currentPage || (currentPage === '' && linkPage === 'index.html#home')) {
+                link.parentElement?.classList.add('active');
+            }
+        });
+    }
+    
+    highlightActiveNavLink();
 });

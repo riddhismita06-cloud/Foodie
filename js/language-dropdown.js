@@ -4,6 +4,30 @@
   if (!customSelect) return;
   const selected = customSelect.querySelector('.selected');
   const options = customSelect.querySelector('.options');
+
+  const supportedLanguages = [
+    { value: 'en', label: 'English' },
+    { value: 'hi', label: 'हिंदी' },
+    { value: 'kn', label: 'ಕನ್ನಡ' },
+    { value: 'mr', label: 'मराठी' },
+    { value: 'bn', label: 'বাংলা' },
+    { value: 'as', label: 'অসমীয়া' },
+    { value: 'ch', label: '中文' },
+    { value: 'ja', label: '日本語' },
+    { value: 'od', label: 'ଓଡ଼ିଆ' }
+  ];
+
+  const existingLangs = new Set(Array.from(options.querySelectorAll('li')).map(li => li.dataset.value));
+  supportedLanguages.forEach(({ value, label }) => {
+    if (!existingLangs.has(value)) {
+      const option = document.createElement('li');
+      option.setAttribute('data-value', value);
+      option.setAttribute('role', 'option');
+      option.textContent = label;
+      options.appendChild(option);
+    }
+  });
+
   const optionItems = options.querySelectorAll('li');
 
   // Toggle dropdown

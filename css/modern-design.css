@@ -203,6 +203,33 @@ header {
     color: #eeeeee !important;
 }
 
+/* Active Navigation Link Highlighting */
+.navList li.active a {
+    color: var(--premium-color, #ff5e00) !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid var(--premium-color, #ff5e00) !important;
+    padding-bottom: 0.2rem !important;
+}
+
+[data-theme="dark"] .navList li.active a {
+    color: #ffa500 !important;
+    border-bottom-color: #ffa500 !important;
+}
+
+.mobile-menu li.active a {
+    background: rgba(255, 94, 0, 0.1) !important;
+    color: var(--premium-color, #ff5e00) !important;
+    font-weight: 700 !important;
+    border-left: 3px solid var(--premium-color, #ff5e00) !important;
+    padding-left: 0.7rem !important;
+}
+
+[data-theme="dark"] .mobile-menu li.active a {
+    background: rgba(255, 165, 0, 0.1) !important;
+    color: #ffa500 !important;
+    border-left-color: #ffa500 !important;
+}
+
 [data-theme="dark"] .navbar-search {
     background: rgba(255, 255, 255, 0.05) !important;
 }
