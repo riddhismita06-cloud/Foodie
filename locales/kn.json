@@ -12,13 +12,15 @@
     "lightMode": "ಲೈಟ್ ಮೋಡ್",
     "signIn": "ಸೈನ್ ಇನ್",
     "cart": "ಕಾರ್ಟ್",
-    "favorites": "ಮೆಚ್ಚಿನವುಗಳು"
+    "favorites": "ಮೆಚ್ಚಿನವುಗಳು",
+    "orderHistory": "Order History"
   },
   "hero": {
     "title": "ನಿಮ್ಮ ಸ್ವಾದಿಷ್ಟವಾದ",
     "highlight": "ಆಹಾರವನ್ನು ಆನಂದಿಸಿ",
     "subtitle": "ನಾವು ವೇಗದ ಡೆಲಿವರಿಯೊಂದಿಗೆ ನಿಮ್ಮ ಹೊಟ್ಟೆಯನ್ನು ಸ್ವಾದಿಷ್ಟ ಆಹಾರದಿಂದ ತುಂಬುತ್ತೇವೆ",
-    "orderNow": "ಈಗ ಆರ್ಡರ್ ಮಾಡಿ"
+    "orderNow": "ಈಗ ಆರ್ಡರ್ ಮಾಡಿ",
+    "viewPopular": "View Popular"
   },
   "services": {
     "sectionTitle": "ನಮ್ಮ ಸೇವೆಗಳು",
@@ -261,7 +263,9 @@
     "registrationSuccess": "Registration successful! Please login.",
     "invalidCredentials": "Invalid email or password!",
     "welcomeBack": "Welcome back, {name}!",
-    "googleLoginFailed": "Google Login failed. Please use regular login."
+    "googleLoginFailed": "Google Login failed. Please use regular login.",
+    "requiredFields": "Please fill in all required fields.",
+    "invalidMobile": "Please enter a valid 10-digit mobile number."
   },
   "checkout": {
     "zoneWarning": "Note: Your address is approximately {distance} km from Nashik. Delivery availability may vary.",
@@ -344,6 +348,13 @@
     "addressUnavailable": "Address unavailable",
     "restaurant": "Restaurant",
     "ratingLabel": "Rating",
-    "youAreHere": "You are here"
+    "youAreHere": "You are here",
+    "sectionTitle": "Nearby Picks",
+    "mainTitle": "Top Rated Restaurants Near You",
+    "intro": "Allow location access to discover the highest rated restaurants around you in real time using Google Places data.",
+    "waiting": "Waiting to load nearby restaurants...",
+    "retryLocation": "Retry Location",
+    "topRatedNearby": "Top Rated Nearby",
+    "list": ""
   }
 }

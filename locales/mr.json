@@ -11,13 +11,16 @@
     "darkMode": "डार्क मोड",
     "lightMode": "लाइट मोड",
     "signIn": "साइन इन",
-    "cart": "कार्ट"
+    "cart": "कार्ट",
+    "favorites": "Favorites",
+    "orderHistory": "Order History"
   },
   "hero": {
     "title": "तुमचा स्वादिष्ट खाना आनंद घ्या",
     "highlight": "खाना",
     "subtitle": "आम्ही जलद डिलिव्हरीसह तुमच्या पोटाला स्वादिष्ट खानाने भरू",
-    "orderNow": "आता ऑर्डर करा"
+    "orderNow": "आता ऑर्डर करा",
+    "viewPopular": "View Popular"
   },
   "services": {
     "sectionTitle": "आमच्या सेवा",
@@ -52,24 +55,25 @@
     "installButton": "अॅप इन्स्टॉल करा"
   },
   "qr": {
-  "scan": "डाउनलोड करण्यासाठी स्कॅन करा",
-  "quickAccess": "आमच्या मोबाइल अॅपमध्ये जलद प्रवेश",
-  "instruction": "तुमच्या कॅमेऱ्याला QR कोडच्या दिशेने निर्देशित करा",
-  "orDownload": "किंवा येथून डाउनलोड करा:",
-  "appStoreSmall": "डाउनलोड करा",
-  "appStoreLarge": "अॅप स्टोअर",
-  "googlePlaySmall": "मिळवा",
-  "googlePlayLarge": "गूगल प्ले",
-  "users": "सक्रिय वापरकर्ते",
-  "rating": "अॅप रेटिंग",
-  "downloads": "डाउनलोड"
-},
+    "scan": "डाउनलोड करण्यासाठी स्कॅन करा",
+    "quickAccess": "आमच्या मोबाइल अॅपमध्ये जलद प्रवेश",
+    "instruction": "तुमच्या कॅमेऱ्याला QR कोडच्या दिशेने निर्देशित करा",
+    "orDownload": "किंवा येथून डाउनलोड करा:",
+    "appStoreSmall": "डाउनलोड करा",
+    "appStoreLarge": "अॅप स्टोअर",
+    "googlePlaySmall": "मिळवा",
+    "googlePlayLarge": "गूगल प्ले",
+    "users": "सक्रिय वापरकर्ते",
+    "rating": "अॅप रेटिंग",
+    "downloads": "डाउनलोड"
+  },
   "newsletter": {
     "sectionTitle": "आमचे सबस्क्राइब",
     "mainTitle": "आमच्या न्यूजलेटरला सबस्क्राइब करा",
     "description": "आम्ही तुम्हाला आमच्या न्यूजलेटरला सबस्क्राइब करण्याची शिफारस करतो, आमच्याबद्दल दैनिक अपडेट मिळण्यासाठी तुमचा ईमेल खाली टाका.",
     "placeholder": "तुमचा ईमेल पत्ता प्रविष्ट करा",
-    "subscribeButton": "सबस्क्राइब करा"
+    "subscribeButton": "सबस्क्राइब करा",
+    "success": "Thank you for subscribing!\nYou will receive updates at: {email}"
   },
   "footer": {
     "ourMenu": "आमचे मेनू",
@@ -120,7 +124,12 @@
   "errors": {
     "noItems": "अरेरे! कोणतीही वस्तू उपलब्ध नाही.",
     "loadError": "उत्पाद लोड करण्यास असमर्थ. कृपया तुमचे कनेक्शन तपासा आणि पुन्हा प्रयत्न करा.",
-    "retry": "पुन्हा प्रयत्न करा"
+    "retry": "पुन्हा प्रयत्न करा",
+    "storage": "Storage error. Your data may not be saved.",
+    "network": "Network error. Please check your connection.",
+    "unhandled": "An error occurred. Please refresh the page.",
+    "promiseRejected": "An error occurred. Please try again.",
+    "cart": "Cart error. Please try again."
   },
   "languages": {
     "english": "English",
@@ -128,7 +137,7 @@
     "kannada": "ಕನ್ನಡ",
     "marathi": "मराठी",
     "chinese": "中文"
-},
+  },
   "aboutUs": {
     "hero": {
       "title": "बद्दल",
@@ -190,6 +199,162 @@
           "description": "कोणत्याही प्रश्नांसाठी किंवा समस्यांसाठी 24 तास ग्राहक सपोर्ट."
         }
       }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The passionate people behind Foodie",
+      "members": {
+        "janavi": {
+          "name": "Janavi Pandole",
+          "role": "CEO & Founder",
+          "bio": "Visionary leader with 10+ years in tech and food industry."
+        },
+        "rahul": {
+          "name": "Rahul Pandole",
+          "role": "Head of Operations",
+          "bio": "Expert in logistics and supply chain management."
+        },
+        "manoj": {
+          "name": "Manoj Pandole",
+          "role": "Culinary Director",
+          "bio": "Award-winning chef ensuring quality standards."
+        },
+        "janaviTech": {
+          "name": "Janavi Pandole",
+          "role": "Tech Lead",
+          "bio": "Building innovative solutions for seamless experience."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "subtitle": "Real feedback from real customers",
+      "reviews": {
+        "alex": {
+          "text": "Best food delivery service I've ever used! Fast, reliable, and the food always arrives hot. Highly recommend!",
+          "author": "Alex Kumar",
+          "role": "Regular Customer"
+        },
+        "priya": {
+          "text": "The customer service is exceptional. They went above and beyond to ensure my order was perfect. 5 stars!",
+          "author": "Priya Sharma",
+          "role": "Food Enthusiast"
+        },
+        "rahul": {
+          "text": "Amazing variety of restaurants and cuisines. The app is super easy to use. My go-to for all food cravings!",
+          "author": "Rahul Patel",
+          "role": "Tech Professional"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Foodie?",
+      "subtitle": "Join thousands of satisfied customers and enjoy delicious food delivered to your doorstep",
+      "signUp": "Sign Up Now",
+      "browseMenu": "Browse Menu"
     }
+  },
+  "nearby": {
+    "sectionTitle": "Nearby Picks",
+    "mainTitle": "Top Rated Restaurants Near You",
+    "intro": "Allow location access to discover the highest rated restaurants around you in real time using Google Places data.",
+    "waiting": "Waiting to load nearby restaurants...",
+    "retryLocation": "Retry Location",
+    "topRatedNearby": "Top Rated Nearby",
+    "list": "",
+    "locationUnavailable": "Location services are unavailable.",
+    "locationUnavailableHint": "Please enable location or try again.",
+    "noLocation": "No nearby restaurants found. Try enabling location.",
+    "loadFailed": "Unable to load nearby restaurants right now. Please verify API key and internet connection.",
+    "apiFailed": "Google Maps request failed. Verify API key permissions for Maps JavaScript API and Places API.",
+    "requestingLocation": "Requesting your location permission...",
+    "locationFound": "Location found. Fetching top rated nearby restaurants...",
+    "defaultLocationWarning": "Location access unavailable. Showing top restaurants near default location.",
+    "showingTop": "Showing {count} top rated restaurants near you.",
+    "noRated": "No rated restaurants found in this area. Try retrying from a different location.",
+    "loading": "Loading...",
+    "noRatings": "No nearby restaurants with ratings were found in this area.",
+    "hoursUnavailable": "Hours unavailable",
+    "openNow": "Open now",
+    "closed": "Closed",
+    "addressUnavailable": "Address unavailable",
+    "restaurant": "Restaurant",
+    "ratingLabel": "Rating",
+    "youAreHere": "You are here"
+  },
+  "auth": {
+    "requiredFields": "Please fill in all required fields.",
+    "invalidMobile": "Please enter a valid 10-digit mobile number.",
+    "signupTagline": "Join Foodie today!",
+    "loginTagline": "Your favorite meals are just a click away.",
+    "guestLogin": "Enter as Guest",
+    "signInButton": "Sign In",
+    "userExists": "User with this email or phone already exists!",
+    "registrationSuccess": "Registration successful! Please login.",
+    "invalidCredentials": "Invalid email or password!",
+    "welcomeBack": "Welcome back, {name}!",
+    "googleLoginFailed": "Google Login failed. Please use regular login."
+  },
+  "checkout": {
+    "payment": {
+      "unavailable": "Payment system is not available. Please refresh the page.",
+      "onlyCard": "Currently only Card payment is integrated."
+    },
+    "zoneWarning": "Note: Your address is approximately {distance} km from Nashik. Delivery availability may vary.",
+    "citySearch": {
+      "error": "Unable to search cities. Please check your connection and try again.",
+      "failed": "City search failed. Please try again."
+    },
+    "pin": {
+      "invalidLength": "Pincode must be 6 digits",
+      "validating": "Validating pincode...",
+      "notFound": "Pincode not found",
+      "cityMismatch": "Pincode does not match selected city",
+      "validationSuccess": "Pincode validated successfully",
+      "validationNetworkFail": "Unable to validate pincode. Please check your connection and try again.",
+      "retryValidation": "Retry Validation",
+      "validationFailed": "PIN validation failed. Please try again."
+    },
+    "phone": {
+      "invalid": "Enter valid Indian number",
+      "invalidFormat": "Please enter a valid phone number"
+    }
+  },
+  "ride": {
+    "form": {
+      "requiredFields": "Please fill in all required fields.",
+      "invalidMobile": "Please enter a valid 10-digit mobile number."
+    },
+    "otp": {
+      "required": "Please enter all 6 digits.",
+      "incorrect": "Incorrect OTP. Please try again."
+    },
+    "theme": {
+      "lightMode": "Light Mode ☀",
+      "darkMode": "Dark Mode 🌙"
+    }
+  },
+  "feedback": {
+    "submitting": "Submitting feedback...",
+    "success": "Thank you for your feedback! We appreciate your input.",
+    "submitFailed": "Failed to submit feedback. Please try again or contact support.",
+    "retryButton": "Retry Submission"
+  },
+  "partner": {
+    "submitFailedField": "Submission failed. Please check your connection and try again.",
+    "submitFailedToast": "Failed to submit partnership request. Please try again."
+  },
+  "forgotPassword": {
+    "invalidEmail": "Please enter a valid email address",
+    "resetLinkSent": "Reset link resent to {email}"
+  },
+  "contributors": {
+    "failedTitle": "Failed to Load Contributors",
+    "failedMessage": "Unable to load contributor data. This might be due to API rate limits or network issues.",
+    "retry": "Retry",
+    "failedToast": "Failed to load contributors. Please try again."
+  },
+  "i18n": {
+    "loadFailed": "Failed to load language translations. Some text may appear in English."
   }
 }
