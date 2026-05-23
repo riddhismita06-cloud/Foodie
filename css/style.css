@@ -2613,7 +2613,6 @@
         flex-direction: column;
     }
 }
-<<<<<<< HEAD
 /* Nearby Fallback UI */
 .nearby-fallback-ui {
     display: flex;
@@ -2642,7 +2641,7 @@
 .nearby-fallback-hint {
     font-size: 13px !important;
     color: #aaa;
-=======
+}
 
 /* ===== Recommendations Section ===== */
 #recommendations {
@@ -2674,5 +2673,54 @@
     .rec-grid {
         gap: 1.5rem;
     }
->>>>>>> 557b6cf (feat: add Smart Recommended for You Section based on Order History)
+}
+
+/* ===== Floating Feedback Button ===== */
+.floating-feedback-btn {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+
+    background-color: var(--gold-finger);
+    color: var(--lead);
+    border: none;
+    border-radius: 8px 0 0 8px;   /* rounded on left only — "docked" to right edge */
+    padding: 14px 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    writing-mode: vertical-rl;   /* text runs vertically */
+
+    box-shadow: -2px 0 12px var(--shadow-strong);
+    transition: padding 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floating-feedback-btn:hover {
+    background-color: var(--gold-hover);
+    padding: 14px 14px;           /* expands slightly on hover */
+    box-shadow: -4px 0 20px var(--shadow-strong);
+}
+
+.floating-feedback-btn i {
+    font-size: 1rem;
+    writing-mode: horizontal-tb;  /* icon stays upright */
+}
+
+/* Responsive: shrink on mobile */
+@media (max-width: 480px) {
+    .floating-feedback-btn {
+        padding: 10px 8px;
+        font-size: 0.65rem;
+    }
 }
