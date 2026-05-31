@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Sign In</title>
+  <link rel="icon" href="../imgs/favicon.webp" type="image/webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/signUp.css" />
+  <link rel="stylesheet" href="../css/modern-design.css" />
+  <link rel="stylesheet" href="../css/cursor.css" />
+  <style>
+    .demo-section { display: none; }
+    .demo-section.active { display: block; }
+    .login-section { display: block; }
+    .login-section.hidden { display: none; }
+    .tab-switcher {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1.5px solid var(--auth-border);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 0.6rem;
+      border: none;
+      background: transparent;
+      color: var(--auth-muted);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .tab-btn.active {
+      background: var(--auth-primary);
+      color: white;
+    }
+  </style>
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+  <script src="https://accounts.google.com/gsi/client" onload="onGoogleLibraryLoad()" async defer></script>
+</head>
+
+<body class="signup-page login-page">
+  <a href="./index.html" class="back-home-btn">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+  <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <main class="auth-split-container">
+    <!-- Left Hero -->
+    <section class="auth-hero">
+      <div class="hero-inner">
+        <div class="auth-emoji">
+          <img src="../imgs/pizza.webp" alt="Food" style="width: 150px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
+        </div>
+        <h1 class="auth-logo">Welcome Back!</h1>
+        <p class="auth-tagline">Your favorite meals are just a click away.</p>
+      </div>
+      <div class="auth-decoration deco-1"></div>
+      <div class="auth-decoration deco-2"></div>
+    </section>
+
+    <!-- Right: Forms -->
+    <section class="auth-form-container">
+      <div class="auth-form-box">
+        <div class="auth-box active">
+          <div class="auth-header">
+            <h2>Sign In</h2>
+            <p>Welcome back! Please enter your details.</p>
+          </div>
+
+          <!-- Tab Switcher -->
+          <div class="tab-switcher">
+            <button class="tab-btn active" id="tabLogin" onclick="showTab('login')">Sign In</button>
+            <button class="tab-btn" id="tabDemo" onclick="showTab('demo')"><i class="fa-solid fa-user-secret"></i> Demo Login</button>
+          </div>
+
+          <!-- ===== REGULAR LOGIN FORM ===== -->
+          <div class="login-section" id="loginSection">
+            <form id="loginForm" onsubmit="handleLogin(event)">
+              <div class="input-group">
+                <label for="loginEmail">Email Address</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-envelope field-icon"></i>
+                  <input type="email" id="loginEmail" placeholder="your@email.com" required />
+                </div>
+              </div>
+
+              <div class="input-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-lock field-icon"></i>
+                  <input type="password" id="loginPassword" placeholder="Enter password" required />
+                  <button type="button" class="eye-btn" onclick="togglePassword('loginPassword')">
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-options flex end">
+                <a href="./forgot-password.html" class="forgot-link">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="submit-btn">Sign In</button>
+            </form>
+          </div>
+
+          <!-- ===== DEMO LOGIN SECTION (NOT a form, avoids validation issues) ===== -->
+          <div class="demo-section" id="demoSection">
+            <div class="input-group">
+              <label for="demoName">Your Name</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="demoName" placeholder="Enter any name" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="demoGender">Gender (for profile picture)</label>
+              <div class="input-wrapper">
+                <i class="fa-solid fa-venus-mars field-icon"></i>
+                <select id="demoGender" class="custom-select-input">
+                  <option value="none">Prefer not to say</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="enterAsGuest()">
+              <i class="fa-solid fa-right-to-bracket"></i> Enter as Guest
+            </button>
+          </div>
+
+          <!-- Social / Google -->
+          <div class="auth-divider"><span>OR CONTINUE WITH</span></div>
+          <div class="auth-social">
+            <div id="loginGoogleBtn"></div>
+          </div>
+
+          <p class="auth-footer">
+            Don't have an account? <a href="./signup.html" class="accent-link">Sign Up here</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    function showTab(tab) {
+      const loginSection = document.getElementById('loginSection');
+      const demoSection = document.getElementById('demoSection');
+      const tabLogin = document.getElementById('tabLogin');
+      const tabDemo = document.getElementById('tabDemo');
+
+      if (tab === 'demo') {
+        loginSection.classList.add('hidden');
+        demoSection.classList.add('active');
+        tabLogin.classList.remove('active');
+        tabDemo.classList.add('active');
+      } else {
+        demoSection.classList.remove('active');
+        loginSection.classList.remove('hidden');
+        tabLogin.classList.add('active');
+        tabDemo.classList.remove('active');
+      }
+    }
+
+    function enterAsGuest() {
+      const demoName = document.getElementById('demoName').value.trim() || 'Guest User';
+      const gender = document.getElementById('demoGender').value;
+
+      let avatar = '../imgs/profile1.webp'; // default neutral
+      if (gender === 'male') avatar = '../imgs/profile1.webp';
+      else if (gender === 'female') avatar = '../imgs/profile3.webp';
+      else avatar = '../imgs/profile1.webp'; // neutral fallback
+
+      const guestUser = {
+        name: demoName,
+        email: 'demo@foodie.com',
+        phone: '',
+        picture: avatar
+      };
+
+      localStorage.setItem('loggedInUser', JSON.stringify(guestUser));
+      
+      // Show success and redirect
+      if (typeof showToast === 'function') {
+        showToast('Welcome, ' + demoName + '!', 'success');
+      }
+      setTimeout(() => {
+        window.location.href = './index.html';
+      }, 800);
+    }
+
+    // Check for demo param in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('demo') === 'true') {
+      showTab('demo');
+    }
+  </script>
+    <script src="../js/floating-feedback.js"></script>
+</body>
+</html>
+
+

@@ -11,13 +11,16 @@
     "darkMode": "ଡାର୍କ ମୋଡ୍",
     "lightMode": "ଲାଇଟ୍ ମୋଡ୍",
     "signIn": "ସାଇନ୍ ଇନ୍",
-    "cart": "କାର୍ଟ"
+    "cart": "କାର୍ଟ",
+    "favorites": "Favorites",
+    "orderHistory": "Order History"
   },
   "hero": {
     "title": "ଆପଣଙ୍କ ସ୍ୱାଦିଷ୍ଟ",
     "highlight": "ଖାଦ୍ୟକୁ ଉପଭୋଗ କରନ୍ତୁ",
     "subtitle": "ଆମେ ଦ୍ରୁତ ଡିଲିଭରୀ ସହିତ ଆପଣଙ୍କ ଭୋକକୁ ସ୍ୱାଦିଷ୍ଟ ଖାଦ୍ୟରେ ପୂରଣ କରୁଛୁ",
-    "orderNow": "ଏବେ ଅର୍ଡର୍ କରନ୍ତୁ"
+    "orderNow": "ଏବେ ଅର୍ଡର୍ କରନ୍ତୁ",
+    "viewPopular": "View Popular"
   },
   "services": {
     "sectionTitle": "ଆମର ସେବାଗୁଡ଼ିକ",
@@ -55,14 +58,9 @@
     "english": "English",
     "hindi": "हिंदी",
     "kannada": "ಕನ್ನಡ",
-    "bengali": "বাংলা",
-    "chinese": "中文",
     "marathi": "मराठी",
-    "japanese": "日本語",
-    "assamese": "অসমীয়া",
-    "odia": "ଓଡ଼ିଆ"
-  }
-,
+    "chinese": "中文"
+  },
   "qr": {
     "scan": "ଡାଉନଲୋଡ୍ କରିବାକୁ ସ୍କାନ୍ କରନ୍ତୁ",
     "quickAccess": "ଆମ ମୋବାଇଲ୍ ଆପ୍‌କୁ ଦ୍ରୁତ ପ୍ରବେଶ",
@@ -81,7 +79,8 @@
     "mainTitle": "ଆମ ନ୍ୟୁଜଲେଟରକୁ ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
     "description": "ଦୈନିକ ଅପଡେଟ୍ ପାଇବା ପାଇଁ ନିଜର ଇମେଲ୍ ଠିକଣା ଦିଅନ୍ତୁ।",
     "placeholder": "ନିଜର ଇମେଲ୍ ଠିକଣା ଲେଖନ୍ତୁ",
-    "subscribeButton": "ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ"
+    "subscribeButton": "ସବସ୍କ୍ରାଇବ୍ କରନ୍ତୁ",
+    "success": "Thank you for subscribing!\nYou will receive updates at: {email}"
   },
   "footer": {
     "ourMenu": "ଆମର ମେନୁ",
@@ -132,6 +131,230 @@
   "errors": {
     "noItems": "ଓଫ୍! କୌଣସି ବସ୍ତୁ ମିଳୁନାହିଁ।",
     "loadError": "ପ୍ରୋଡକ୍ଟ ଲୋଡ୍ କରିପାରିଲା ନାହିଁ। ଦୟାକରି ନେଟୱର୍କ ଯାଞ୍ଚ କରନ୍ତୁ।",
-    "retry": "ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ"
+    "retry": "ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ",
+    "storage": "Storage error. Your data may not be saved.",
+    "network": "Network error. Please check your connection.",
+    "unhandled": "An error occurred. Please refresh the page.",
+    "promiseRejected": "An error occurred. Please try again.",
+    "cart": "Cart error. Please try again."
+  },
+  "nearby": {
+    "sectionTitle": "Nearby Picks",
+    "mainTitle": "Top Rated Restaurants Near You",
+    "intro": "Allow location access to discover the highest rated restaurants around you in real time using Google Places data.",
+    "waiting": "Waiting to load nearby restaurants...",
+    "retryLocation": "Retry Location",
+    "topRatedNearby": "Top Rated Nearby",
+    "list": "",
+    "locationUnavailable": "Location services are unavailable.",
+    "locationUnavailableHint": "Please enable location or try again.",
+    "noLocation": "No nearby restaurants found. Try enabling location.",
+    "loadFailed": "Unable to load nearby restaurants right now. Please verify API key and internet connection.",
+    "apiFailed": "Google Maps request failed. Verify API key permissions for Maps JavaScript API and Places API.",
+    "requestingLocation": "Requesting your location permission...",
+    "locationFound": "Location found. Fetching top rated nearby restaurants...",
+    "defaultLocationWarning": "Location access unavailable. Showing top restaurants near default location.",
+    "showingTop": "Showing {count} top rated restaurants near you.",
+    "noRated": "No rated restaurants found in this area. Try retrying from a different location.",
+    "loading": "Loading...",
+    "noRatings": "No nearby restaurants with ratings were found in this area.",
+    "hoursUnavailable": "Hours unavailable",
+    "openNow": "Open now",
+    "closed": "Closed",
+    "addressUnavailable": "Address unavailable",
+    "restaurant": "Restaurant",
+    "ratingLabel": "Rating",
+    "youAreHere": "You are here"
+  },
+  "auth": {
+    "requiredFields": "Please fill in all required fields.",
+    "invalidMobile": "Please enter a valid 10-digit mobile number.",
+    "signupTagline": "Join Foodie today!",
+    "loginTagline": "Your favorite meals are just a click away.",
+    "guestLogin": "Enter as Guest",
+    "signInButton": "Sign In",
+    "userExists": "User with this email or phone already exists!",
+    "registrationSuccess": "Registration successful! Please login.",
+    "invalidCredentials": "Invalid email or password!",
+    "welcomeBack": "Welcome back, {name}!",
+    "googleLoginFailed": "Google Login failed. Please use regular login."
+  },
+  "checkout": {
+    "payment": {
+      "unavailable": "Payment system is not available. Please refresh the page.",
+      "onlyCard": "Currently only Card payment is integrated."
+    },
+    "zoneWarning": "Note: Your address is approximately {distance} km from Nashik. Delivery availability may vary.",
+    "citySearch": {
+      "error": "Unable to search cities. Please check your connection and try again.",
+      "failed": "City search failed. Please try again."
+    },
+    "pin": {
+      "invalidLength": "Pincode must be 6 digits",
+      "validating": "Validating pincode...",
+      "notFound": "Pincode not found",
+      "cityMismatch": "Pincode does not match selected city",
+      "validationSuccess": "Pincode validated successfully",
+      "validationNetworkFail": "Unable to validate pincode. Please check your connection and try again.",
+      "retryValidation": "Retry Validation",
+      "validationFailed": "PIN validation failed. Please try again."
+    },
+    "phone": {
+      "invalid": "Enter valid Indian number",
+      "invalidFormat": "Please enter a valid phone number"
+    }
+  },
+  "ride": {
+    "form": {
+      "requiredFields": "Please fill in all required fields.",
+      "invalidMobile": "Please enter a valid 10-digit mobile number."
+    },
+    "otp": {
+      "required": "Please enter all 6 digits.",
+      "incorrect": "Incorrect OTP. Please try again."
+    },
+    "theme": {
+      "lightMode": "Light Mode ☀",
+      "darkMode": "Dark Mode 🌙"
+    }
+  },
+  "feedback": {
+    "submitting": "Submitting feedback...",
+    "success": "Thank you for your feedback! We appreciate your input.",
+    "submitFailed": "Failed to submit feedback. Please try again or contact support.",
+    "retryButton": "Retry Submission"
+  },
+  "partner": {
+    "submitFailedField": "Submission failed. Please check your connection and try again.",
+    "submitFailedToast": "Failed to submit partnership request. Please try again."
+  },
+  "forgotPassword": {
+    "invalidEmail": "Please enter a valid email address",
+    "resetLinkSent": "Reset link resent to {email}"
+  },
+  "contributors": {
+    "failedTitle": "Failed to Load Contributors",
+    "failedMessage": "Unable to load contributor data. This might be due to API rate limits or network issues.",
+    "retry": "Retry",
+    "failedToast": "Failed to load contributors. Please try again."
+  },
+  "i18n": {
+    "loadFailed": "Failed to load language translations. Some text may appear in English."
+  },
+  "aboutUs": {
+    "hero": {
+      "title": "About",
+      "highlight": "Foodie",
+      "subtitle": "Your trusted partner in delivering delicious food with lightning-fast service"
+    },
+    "story": {
+      "title": "Our Story",
+      "para1": "Founded in 2022, Foodie began with a simple mission: to connect food lovers with their favorite restaurants through fast, reliable delivery. What started as a small startup has grown into a trusted platform serving thousands of customers daily.",
+      "para2": "We believe that great food should be accessible to everyone, anytime. Our team works tirelessly to ensure that every meal arrives hot, fresh, and on time.",
+      "para3": "Finally...at Foodie we don't just deliver meals, we deliver happiness at a time"
+    },
+    "mission": {
+      "mission": {
+        "title": "Our Mission",
+        "description": "To revolutionize food delivery by supporting local restaurants, and creating memorable dining experiences for customers."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To become the most trusted and loved food delivery platform globally, setting new standards for quality, speed, and customer satisfaction."
+      },
+      "values": {
+        "title": "Our Values",
+        "description": "Quality, reliability, innovation, and customer-first approach guide everything we do. We're committed to excellence in every delivery."
+      }
+    },
+    "stats": {
+      "customers": "Happy Customers",
+      "partners": "Restaurant Partners",
+      "orders": "Orders Delivered",
+      "time": "Avg. Delivery Time"
+    },
+    "whyChoose": {
+      "title": "Why Choose Foodie?",
+      "subtitle": "We're not just another food delivery service",
+      "features": {
+        "fast": {
+          "title": "Lightning Fast",
+          "description": "Average delivery time of just 30 minutes. Hot food, guaranteed."
+        },
+        "quality": {
+          "title": "Premium Quality",
+          "description": "Partner with only the best restaurants to ensure top-notch quality."
+        },
+        "easy": {
+          "title": "Easy Ordering",
+          "description": "Simple, intuitive app and website for hassle-free ordering."
+        },
+        "secure": {
+          "title": "Safe & Secure",
+          "description": "Contactless delivery and secure payment options for your safety."
+        },
+        "prices": {
+          "title": "Best Prices",
+          "description": "Competitive pricing with exclusive deals and discounts."
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "Round-the-clock customer support for any queries or issues."
+        }
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The passionate people behind Foodie",
+      "members": {
+        "janavi": {
+          "name": "Janavi Pandole",
+          "role": "CEO & Founder",
+          "bio": "Visionary leader with 10+ years in tech and food industry."
+        },
+        "rahul": {
+          "name": "Rahul Pandole",
+          "role": "Head of Operations",
+          "bio": "Expert in logistics and supply chain management."
+        },
+        "manoj": {
+          "name": "Manoj Pandole",
+          "role": "Culinary Director",
+          "bio": "Award-winning chef ensuring quality standards."
+        },
+        "janaviTech": {
+          "name": "Janavi Pandole",
+          "role": "Tech Lead",
+          "bio": "Building innovative solutions for seamless experience."
+        }
+      }
+    },
+    "testimonials": {
+      "title": "What Our Customers Say",
+      "subtitle": "Real feedback from real customers",
+      "reviews": {
+        "alex": {
+          "text": "Best food delivery service I've ever used! Fast, reliable, and the food always arrives hot. Highly recommend!",
+          "author": "Alex Kumar",
+          "role": "Regular Customer"
+        },
+        "priya": {
+          "text": "The customer service is exceptional. They went above and beyond to ensure my order was perfect. 5 stars!",
+          "author": "Priya Sharma",
+          "role": "Food Enthusiast"
+        },
+        "rahul": {
+          "text": "Amazing variety of restaurants and cuisines. The app is super easy to use. My go-to for all food cravings!",
+          "author": "Rahul Patel",
+          "role": "Tech Professional"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Foodie?",
+      "subtitle": "Join thousands of satisfied customers and enjoy delicious food delivered to your doorstep",
+      "signUp": "Sign Up Now",
+      "browseMenu": "Browse Menu"
+    }
   }
 }

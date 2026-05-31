@@ -1,252 +1,136 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Foodie | Login & Sign Up</title>
-
-  <!-- ✅ FIXED: Early dark-mode application (runs before paint) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie - Create Account</title>
+  <link rel="icon" href="../imgs/favicon.webp" type="image/webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/signUp.css" />
+  <link rel="stylesheet" href="../css/modern-design.css" />
+  <link rel="stylesheet" href="../css/cursor.css" />
   <script>
+    // Immediately apply saved theme
     (function () {
-      try {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          document.documentElement.style.background = '#16213e';
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-      } catch (e) {
-        console.warn('Theme init error:', e);
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
       }
     })();
   </script>
-
-  <link rel="icon" href="../imgs/favicon.webp" type="image/webp" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="../css/signUp.css" />
+  <!-- Google Sign-In Library -->
+  <script src="https://accounts.google.com/gsi/client" onload="onGoogleLibraryLoad()" async defer></script>
 </head>
 
 <body class="signup-page">
-  <a href="index.html" class="back-home" aria-label="Back to Home">
-    <span class="icon">←</span> Back to Home
+  <a href="./index.html" class="back-home-btn">
+    <i class="fa-solid fa-arrow-left"></i>
   </a>
 
-  <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+  <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
     <i class="fa-solid fa-moon"></i>
   </button>
 
-  <main class="cont">
-    <div class="container">
-      <div class="hero-section" id="heroSection">
-        <h1>Foodie.</h1>
-        <p id="tagline">Love at first bite</p>
-        <div class="emoji" id="emoji">🍕</div>
+  <main class="auth-split-container">
+    <!-- Left Section: Illustration -->
+    <section id="heroSection" class="auth-hero">
+      <div class="hero-inner">
+        <div class="auth-emoji" id="heroEmoji">
+            <img src="../imgs/pancakes.webp" alt="Food" style="width: 150px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));">
+        </div>
+        <h1 class="auth-logo">Join Foodie.</h1>
+        <p class="auth-tagline" id="heroTagline">Fresh rolls, happy souls!</p>
       </div>
+      
+      <!-- Particle effects or background elements -->
+      <div class="auth-decoration deco-1"></div>
+      <div class="auth-decoration deco-2"></div>
+    </section>
 
-      <section class="form-section" aria-label="Login and Sign Up Forms">
-        <!-- Login Form -->
-        <article id="loginForm" class="auth-container active" aria-labelledby="loginTitle">
-          <h2 id="loginTitle">Welcome Back</h2>
-          <p class="subtitle">Login to your account to continue ordering delicious meals</p>
-
-          <form onsubmit="handleLogin(event)" aria-label="Login Form">
-            <div class="form-group">
-              <label for="loginEmail">Email Address</label>
-              <input type="email" id="loginEmail" placeholder="your@email.com" required />
-            </div>
-
-            <div class="form-group">
-              <label for="loginPassword">Password</label>
-              <div class="password-field">
-                <input type="password" id="loginPassword" placeholder="Enter your password" required />
-                <button type="button" class="toggle-password" onclick="togglePassword('loginPassword')"
-                  aria-label="Toggle password visibility">
-                  👁️
-                </button>
-              </div>
-            </div>
-
-            <div class="forgot-password">
-              <a href="forgot-password.html">Forgot Password?</a>
-            </div>
-
-            <div class="checkbox-group">
-              <input type="checkbox" id="rememberMe" />
-              <label for="rememberMe">I agree to the Terms & Conditions</label>
-            </div>
-
-            <button type="submit" class="btn">Login to Account</button>
-          </form>
-
-          <div class="divider"><span>OR CONTINUE WITH</span></div>
-
-          <div class="social-login">
-            <button type="button" class="social-btn" id="loginGoogleBtn">
-              <i class="fa-brands fa-google"></i> Sign in with Google
-            </button>
-            <button type="button" class="phone-login" onclick="loginWithPhone()">
-              <i class="fa-solid fa-phone"></i> Continue with Phone Number
-            </button>
+    <!-- Right Section: Form -->
+    <section class="auth-form-container">
+      <div class="auth-form-box">
+        <div id="signupForm" class="auth-box active">
+          <div class="auth-header">
+            <h2>Create Account</h2>
+            <p>Join us today and discover amazing food near you</p>
           </div>
 
-          <p class="switch-form">
-            Don't have an account? <a onclick="switchForm('signup')">Create one now</a>
-          </p>
-
-          <div id="recaptcha-container"></div>
-        </article>
-
-        <!-- Sign Up Form -->
-        <article id="signupForm" class="auth-container" aria-labelledby="signupTitle">
-          <h2 id="signupTitle">Create Account</h2>
-          <p class="subtitle">Join us today and discover amazing food near you</p>
-
-          <form onsubmit="handleSignup(event)" aria-label="Sign Up Form">
-            <div class="form-group">
+          <form onsubmit="handleSignup(event)">
+            <div class="input-group">
               <label for="signupName">Full Name</label>
-              <input type="text" id="signupName" placeholder="John Doe" required />
+              <div class="input-wrapper">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="signupName" placeholder="John Doe" required 
+                       pattern="[a-zA-Z\s]*" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');" />
+              </div>
             </div>
 
-            <div class="form-group">
+            <div class="input-group">
               <label for="signupEmail">Email Address</label>
-              <input type="email" id="signupEmail" placeholder="your@email.com" required />
+              <div class="input-wrapper">
+                <i class="fa-solid fa-envelope field-icon"></i>
+                <input type="email" id="signupEmail" placeholder="your@email.com" required 
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                       oninput="this.value = this.value.toLowerCase().replace(/[^a-z0-9@.]/g, '');" />
+              </div>
             </div>
 
-            <div class="form-group">
+            <div class="input-group">
               <label for="signupPhone">Phone Number</label>
-              <input type="tel" id="signupPhone" placeholder="+91 12345 67890" required />
+              <div class="input-wrapper">
+                <i class="fa-solid fa-phone field-icon"></i>
+                <input type="tel" id="signupPhone" placeholder="0000000000" required 
+                       pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+              </div>
             </div>
 
-            <div class="form-group">
+            <div class="input-group">
               <label for="signupPassword">Password</label>
-              <div class="password-field">
-                <input type="password" id="signupPassword" placeholder="Create a strong password" required />
-                <button type="button" class="toggle-password" onclick="togglePassword('signupPassword')"
-                  aria-label="Toggle password visibility">
-                  👁️
+              <div class="input-wrapper">
+                <i class="fa-solid fa-lock field-icon"></i>
+                <input type="password" id="signupPassword" placeholder="Create strong password" required 
+                       pattern="(?=.*[A-Z])(?=.*[!@#$%^&*(),.?\&quot;:{}|<>]).{6,}" 
+                       title="Must contain at least one uppercase letter, one special character, and be at least 6 characters long" />
+                <button type="button" class="eye-btn" onclick="togglePassword('signupPassword')">
+                  <i class="fa-solid fa-eye"></i>
                 </button>
               </div>
             </div>
 
-            <div class="checkbox-group">
-              <input type="checkbox" id="agreeTerms" required />
-              <label for="agreeTerms">I agree to the Terms & Conditions</label>
+            <div class="form-options mb-1">
+              <label class="checkbox-container">
+                <input type="checkbox" required>
+                <span class="checkmark"></span>
+                I agree to the <a href="./terms-of-service.html" target="_blank" class="accent-link">Terms & Conditions</a>
+              </label>
             </div>
 
-            <button type="submit" class="btn">Create Account</button>
+            <button type="submit" class="submit-btn">Create Account</button>
           </form>
 
-          <div class="divider"><span>OR SIGN UP WITH</span></div>
+          <div class="auth-divider"><span>OR SIGN UP WITH</span></div>
 
-          <div class="social-login">
-            <button type="button" class="social-btn" id="signupGoogleBtn">
-              <i class="fa-brands fa-google"></i> Sign up with Google
-            </button>
+          <div class="auth-social">
+            <div id="signupGoogleBtn"></div>
           </div>
 
-          <p class="switch-form">
-            Already have an account? <a onclick="switchForm('login')">Login here</a>
+          <p class="auth-footer">
+            Already have an account? <a href="./login.html" class="accent-link">Login here</a>
           </p>
-        </article>
-      </section>
-    </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- ✅ Updated JS -->
-  <script>
-    // Initialize theme icon correctly
-    function updateThemeIcon(theme) {
-      const icon = themeToggle.querySelector('i');
-      if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-    }
+  <style>
+    .mb-1 { margin-bottom: 1.5rem !important; }
+  </style>
 
-    // Initialize from storage
-    (function initializeTheme() {
-      try {
-        const theme = localStorage.getItem('theme') || 'light';
-        if (theme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-        updateThemeIcon(theme);
-      } catch (e) { }
-    })();
-
-    const themeToggle = document.getElementById('themeToggle');
-    const hero = document.getElementById("heroSection");
-    const tagline = document.getElementById("tagline");
-    const emoji = document.getElementById("emoji");
-
-    themeToggle.addEventListener('click', () => {
-      try {
-        const current = document.documentElement.getAttribute('data-theme');
-        const newTheme = current === 'dark' ? 'light' : 'dark';
-        if (newTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        } else {
-          document.documentElement.removeAttribute('data-theme');
-        }
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-      } catch (e) { }
-    });
-
-    /* Hero animation + form toggles remain unchanged */
-    const variations = [
-      { emoji: "🍕", text: "Love at first bite", gradient: "linear-gradient(135deg, #f39c12 0%, #e67e22 100%)" },
-      { emoji: "🍔", text: "Juicy & loaded with flavor", gradient: "linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)" },
-      { emoji: "🍣", text: "Fresh rolls, happy souls", gradient: "linear-gradient(135deg, #3498db 0%, #2980b9 100%)" },
-      { emoji: "🍰", text: "Sweet dreams served daily", gradient: "linear-gradient(135deg, #e91e63 0%, #c2185b 100%)" },
-      { emoji: "🥗", text: "Fresh, light & right", gradient: "linear-gradient(135deg, #27ae60 0%, #229954 100%)" },
-      { emoji: "🌮", text: "Taco about happiness", gradient: "linear-gradient(135deg, #f39c12 0%, #d68910 100%)" }
-    ];
-    let index = 0;
-    let isAnimating = false;
-
-    function changeHero() {
-      if (isAnimating) return;
-      isAnimating = true;
-      index = (index + 1) % variations.length;
-      const { emoji: newEmoji, text, gradient } = variations[index];
-      tagline.style.opacity = 0;
-      emoji.style.opacity = 0;
-      setTimeout(() => {
-        hero.style.background = gradient;
-        tagline.textContent = text;
-        emoji.textContent = newEmoji;
-        tagline.style.opacity = 1;
-        emoji.style.opacity = 1;
-        setTimeout(() => (isAnimating = false), 300);
-      }, 300);
-    }
-
-    setInterval(changeHero, 4000);
-
-    function switchForm(formType) {
-      const loginForm = document.getElementById('loginForm');
-      const signupForm = document.getElementById('signupForm');
-      if (formType === 'signup') {
-        loginForm.classList.remove('active');
-        signupForm.classList.add('active');
-      } else {
-        signupForm.classList.remove('active');
-        loginForm.classList.add('active');
-      }
-    }
-
-    function togglePassword(id) {
-      const input = document.getElementById(id);
-      const button = input.nextElementSibling;
-      if (input.type === 'password') {
-        input.type = 'text';
-        button.textContent = '🙈';
-      } else {
-        input.type = 'password';
-        button.textContent = '👁️';
-      }
-    }
-  </script>
+  <script src="../js/auth.js"></script>
+    <script src="../js/floating-feedback.js"></script>
 </body>
-
 </html>
+

@@ -121,15 +121,16 @@ async function initData() {
             errorMessage.innerHTML = `
                 <div class="error-state">
                     <div class="error-icon">⚠️</div>
-                    <h3>Failed to Load Contributors</h3>
-                    <p>Unable to load contributor data. This might be due to API rate limits or network issues.</p>
-                    <button class="retry-btn" onclick="initializeData()">Retry</button>
+                    <h3>${t('contributors.failedTitle', 'Failed to Load Contributors')}</h3>
+                    <p>${t('contributors.failedMessage', 'Unable to load contributor data. This might be due to API rate limits or network issues.')}</p>
+                    <button class="retry-btn" onclick="initializeData()">${t('contributors.retry', 'Retry')}</button>
                 </div>
             `;
         }
 
         // Show toast notification
-        showErrorToast('Failed to load contributors. Please try again.');
+        showErrorToast(t('contributors.failedToast', 'Failed to load contributors. Please try again.'));
+
     }
 }
 

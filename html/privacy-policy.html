@@ -5,8 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy | Foodie</title>
   <link rel="stylesheet" href="../css/policy.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/modern-design.css">
 </head>
 <body>
+    <header>
+    <nav class="navbar flex between wrapper">
+        <a href="./index.html" class="logo">Foodie.</a>
+
+        <!-- DESKTOP MENU -->
+        <ul class="navList flex gap-1 between">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+        </ul>
+
+        <div class="desktop-action flex gap-1">
+            <!-- Language Selector -->
+            <div class="custom-select" id="language-custom-select">
+                <div class="selected" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="language-custom-select">
+                    English
+                </div>
+                <ul class="options" role="listbox" tabindex="-1">
+                    <li data-value="en" role="option" aria-selected="true">English</li>
+                    <li data-value="hi" role="option">हिंदी</li>
+                    <li data-value="kn" role="option">ಕನ್ನಡ</li>
+                    <li data-value="mr" role="option">मराठी</li>
+                    <li data-value="bn" role="option">বাংলা</li>
+                </ul>
+            </div>
+
+            <!-- Search Input -->
+            <form class="navbar-search" action="#" method="get">
+                <input type="text" name="search" id="navbar-search" placeholder="Search..." aria-label="Search menu items">
+                <button type="submit" id="navbar-search-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <!-- Theme toggle -->
+            <button class="desktop-action theme-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <!-- Cart Icon -->
+            <a href="./checkout.html" class="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-value">0</span>
+            </a>
+
+            <!-- Sign-in button -->
+            <a href="./login.html" class="btn">
+                <i class="fa-solid fa-user"></i>&nbsp;Sign in
+            </a>
+
+            <!-- Hamburger -->
+            <a href="#" class="hamberger"><i class="fa-solid fa-bars"></i></a>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <ul class="mobile-menu">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+            <li>
+                <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i><span>Dark Mode</span>
+                </button>
+            </li>
+            <li>
+                <a href="./login.html" class="btn">
+                    <i class="fa-solid fa-user"></i>&nbsp;Sign in
+                </a>
+            </li>
+        </ul>
+    </nav></header>
   <section class="policy-page">
     <div class="container">
       <h1>Privacy Policy</h1>
@@ -52,5 +131,11 @@
       <p>Phone: +91 98765 43210</p>
     </div>
   </section>
+<footer id="contacts"></footer>
+    <script src="../js/footer.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/floating-feedback.js"></script>
 </body>
 </html>
+
+

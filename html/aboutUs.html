@@ -22,98 +22,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode-icons.css" />
     <link rel="stylesheet" href="../css/aboutUs.css" />
     <link rel="stylesheet" href="../css/cursor.css">
 
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/modern-design.css">
 </head>
 
 
 <body>
     <header>
-        <nav class="navbar flex between wrapper">
-            <div class="logo">Foodie.</div>
+    <nav class="navbar flex between wrapper">
+        <a href="./index.html" class="logo">Foodie.</a>
 
-            <!-- DESKTOP MENU -->
-            <ul class="navList flex gap-3 between">
-                <li><a class="active" href="./index.html#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
-                <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
-                <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
-                <li><a href="nearbyres.html" data-i18n="nav.nearby">Nearby Restaurants</a></li>
-            </ul>
-            <div class="desktop-action flex gap-2">
-                <!-- Language Selector -->
-                <div class="custom-select" id="language-custom-select">
-                    <div class="selected" tabindex="0" aria-haspopup="listbox" aria-expanded="false"
-                        aria-labelledby="language-custom-select">
-                        English
-                    </div>
-                    <ul class="options" role="listbox" tabindex="-1">
-                        <li data-value="en" role="option" aria-selected="true">English</li>
-                        <li data-value="hi" role="option">हिंदी</li>
-                        <li data-value="kn" role="option">ಕನ್ನಡ</li>
-                        <li data-value="ch" role="option">中文</li>
-                    </ul>
+        <!-- DESKTOP MENU -->
+        <ul class="navList flex gap-1 between">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./order-history.html" data-i18n="nav.orderHistory"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+        </ul>
+
+        <div class="desktop-action flex gap-1">
+            <!-- Language Selector -->
+            <div class="custom-select" id="language-custom-select">
+                <div class="selected" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="language-custom-select">
+                    English
                 </div>
-
-                <!-- Search Input -->
-                <form class="navbar-search" action="#" method="get">
-                    <input type="text" name="search" id="navbar-search" placeholder="Search your food ..."
-                        aria-label="Search menu items">
-                    <button type="submit" id="navbar-search-btn" aria-label="Search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-
-                <!-- Theme toggle -->
-                <button class="desktop-action theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-
-                <!-- Cart Icon -->
-                <a href="./checkout.html" class="cart-icon">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span class="cart-value">0</span>
-                </a>
-
-                <!-- Sign-in button -->
-                <a href="./signup.html" class="btn">
-                    Sign in&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </a>
-
-                <!-- Hamburger -->
-                <a href="#" class="hamberger"><i class="fa-solid fa-bars"></i></a>
+                <ul class="options" role="listbox" tabindex="-1">
+                    <li data-value="en" role="option" aria-selected="true">English</li>
+                    <li data-value="hi" role="option">हिंदी</li>
+                    <li data-value="kn" role="option">ಕನ್ನಡ</li>
+                    <li data-value="mr" role="option">मराठी</li>
+                    <li data-value="bn" role="option">বাংলা</li>
+                </ul>
             </div>
 
+            <!-- Search Input -->
+            <form class="navbar-search" action="#" method="get">
+                <input type="text" name="search" id="navbar-search" placeholder="Search..." aria-label="Search menu items">
+                <button type="submit" id="navbar-search-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
 
-            <!-- MOBILE MENU -->
-            <ul class="mobile-menu">
-                <li><a class="active" href="./index.html#home" data-i18n="nav.home">Home</a></li>
-                <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
-                <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
-                <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
-                <li><a href="nearbyres.html" data-i18n="nav.nearby">Nearby Restaurants</a></li>
-                <!-- Search Input -->
-                <form class="navbar-search" action="#" method="get">
-                    <input type="text" name="search" id="navbar-search" placeholder="Search your food ..."
-                        aria-label="Search menu items">
-                    <button type="submit" id="navbar-search-btn" aria-label="Search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-                <li>
-                    <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark mode">
-                        <i class="fa-solid fa-moon"></i><span>Dark Mode</span>
-                    </button>
-                </li>
-                <li>
-                    <a href="./signup.html" class="btn">
-                        Sign in&nbsp;<i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <!-- Theme toggle -->
+            <button class="desktop-action theme-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <!-- Cart Icon -->
+            <a href="./checkout.html" class="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-value">0</span>
+            </a>
+
+            <!-- Sign-in button -->
+            <a href="./login.html" class="btn">
+                <i class="fa-solid fa-user"></i>&nbsp;Sign in
+            </a>
+
+            <!-- Hamburger -->
+            <a href="#" class="hamberger"><i class="fa-solid fa-bars"></i></a>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <ul class="mobile-menu">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+            <li>
+                <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i><span>Dark Mode</span>
+                </button>
+            </li>
+            <li>
+                <a href="./login.html" class="btn">
+                    <i class="fa-solid fa-user"></i>&nbsp;Sign in
+                </a>
+            </li>
+        </ul>
+    </nav></header>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -142,7 +138,7 @@
                 </p>
                 <p class="story-highlight">
                     Because at <span class="brand">Foodie</span>, we don’t just deliver food —
-                    <span class="highlight-text">we deliver happiness 🍽️💛</span>
+                    <span class="highlight-text">we deliver happiness <i class="fa-solid fa-utensils"></i><i class="fa-solid fa-heart"></i></span>
                 </p>
             </div>
         </div>
@@ -156,7 +152,9 @@
             <div class="mission-card">
                 <div class="mission-inner">
                     <div class="mission-front">
-                        <div class="mission-icon">🎯</div>
+                        <div class="mission-icon">
+                            <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="aboutUs.mission.mission.title">Our Mission</h3>
                     </div>
                     <div class="mission-back">
@@ -169,7 +167,9 @@
             <div class="mission-card">
                 <div class="mission-inner">
                     <div class="mission-front">
-                        <div class="mission-icon">👁️</div>
+                        <div class="mission-icon">
+                            <i class="fa-solid fa-eye" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="aboutUs.mission.vision.title">Our Vision</h3>
                     </div>
                     <div class="mission-back">
@@ -183,7 +183,9 @@
             <div class="mission-card">
                 <div class="mission-inner">
                     <div class="mission-front">
-                        <div class="mission-icon">💡</div>
+                        <div class="mission-icon">
+                            <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+                        </div>
                         <h3 data-i18n="aboutUs.mission.values.title">Our Values</h3>
                     </div>
                     <div class="mission-back">
@@ -228,37 +230,49 @@
         </div>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.fast.title">Lightning Fast</h3>
                 <p data-i18n="aboutUs.whyChoose.features.fast.description">Average delivery time of just 30 minutes. Hot
                     food, guaranteed.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.quality.title">Premium Quality</h3>
                 <p data-i18n="aboutUs.whyChoose.features.quality.description">Partner with only the best restaurants to
                     ensure top-notch quality.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📱</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-mobile" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.easy.title">Easy Ordering</h3>
                 <p data-i18n="aboutUs.whyChoose.features.easy.description">Simple, intuitive app and website for
                     hassle-free ordering.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔒</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-lock" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.secure.title">Safe & Secure</h3>
                 <p data-i18n="aboutUs.whyChoose.features.secure.description">Contactless delivery and secure payment
                     options for your safety.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">💰</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.prices.title">Best Prices</h3>
                 <p data-i18n="aboutUs.whyChoose.features.prices.description">Competitive pricing with exclusive deals
                     and discounts.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎧</div>
+                <div class="feature-icon">
+                    <i class="fa-solid fa-headphones" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.whyChoose.features.support.title">24/7 Support</h3>
                 <p data-i18n="aboutUs.whyChoose.features.support.description">Round-the-clock customer support for any
                     queries or issues.</p>
@@ -274,28 +288,36 @@
         </div>
         <div class="team-grid">
             <div class="team-card">
-                <div class="team-photo">👩‍💼</div>
+                <div class="team-photo">
+                    <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.team.members.janavi.name">Janavi Pandole</h3>
                 <p class="team-role" data-i18n="aboutUs.team.members.janavi.role">CEO & Founder</p>
                 <p class="team-bio" data-i18n="aboutUs.team.members.janavi.bio">Visionary leader with 10+ years in tech
                     and food industry.</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👨‍💼</div>
+                <div class="team-photo">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.team.members.rahul.name">Rahul Pandole</h3>
                 <p class="team-role" data-i18n="aboutUs.team.members.rahul.role">Head of Operations</p>
                 <p class="team-bio" data-i18n="aboutUs.team.members.rahul.bio">Expert in logistics and supply chain
                     management.</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👨‍🍳</div>
+                <div class="team-photo">
+                    <i class="fa-solid fa-utensils" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.team.members.manoj.name">Manoj Pandole</h3>
                 <p class="team-role" data-i18n="aboutUs.team.members.manoj.role">Culinary Director</p>
                 <p class="team-bio" data-i18n="aboutUs.team.members.manoj.bio">Award-winning chef ensuring quality
                     standards.</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👩‍💻</div>
+                <div class="team-photo">
+                    <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+                </div>
                 <h3 data-i18n="aboutUs.team.members.janaviTech.name">Janavi Pandole</h3>
                 <p class="team-role" data-i18n="aboutUs.team.members.janaviTech.role">Tech Lead</p>
                 <p class="team-bio" data-i18n="aboutUs.team.members.janaviTech.bio">Building innovative solutions for
@@ -377,8 +399,8 @@
             <p data-i18n="aboutUs.cta.subtitle">Join thousands of satisfied customers and enjoy delicious food delivered
                 to your doorstep</p>
             <div class="cta-buttons">
-                <a href="../html/signup.html" class="cta-btn primary" data-i18n="aboutUs.cta.signUp">Sign Up Now</a>
-                <a href="../html/menu.html" class="cta-btn primary" data-i18n="aboutUs.cta.browseMenu">Browse Menu</a>
+                <a href="./signup.html" class="cta-btn primary" data-i18n="aboutUs.cta.signUp">Sign Up Now</a>
+                <a href="./menu.html" class="cta-btn primary" data-i18n="aboutUs.cta.browseMenu">Browse Menu</a>
             </div>
         </div>
     </section>
@@ -394,63 +416,6 @@
     </a>
 
     <script>
-        // Theme Toggle with smooth icon transition
-        (function () {
-            const themeToggles = document.querySelectorAll('.theme-toggle');
-            const html = document.documentElement;
-
-            // Initial theme setting is now handled by the inline script in the head.
-            // This script only updates the icon and sets up event listeners.
-
-            // Update icon based on theme (guarded)
-            function updateThemeIcon() {
-                themeToggles.forEach(toggle => {
-                    if (!toggle) return;
-                    const icon = toggle.querySelector('i');
-                    if (!icon) return;
-                    if (html.getAttribute('data-theme') === 'dark') {
-                        icon.style.transform = 'rotate(360deg) scale(0)';
-                        setTimeout(() => {
-                            icon.className = 'fa-solid fa-sun';
-                            icon.style.transform = 'rotate(0deg) scale(1)';
-                        }, 250);
-                    } else {
-                        icon.style.transform = 'rotate(-360deg) scale(0)';
-                        setTimeout(() => {
-                            icon.className = 'fa-solid fa-moon';
-                            icon.style.transform = 'rotate(0deg) scale(1)';
-                        }, 250);
-                    }
-                });
-            }
-
-            updateThemeIcon(); // Call once on load to set initial icon
-
-            themeToggles.forEach(toggle => {
-                if (toggle) {
-                    toggle.addEventListener('click', () => {
-                        const currentTheme = html.getAttribute('data-theme');
-                        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                        html.setAttribute('data-theme', newTheme);
-                        localStorage.setItem('theme', newTheme);
-                        updateThemeIcon();
-                    });
-                }
-            });
-        })();
-
-        // Mobile Menu Toggle (guarded)
-        (function () {
-            const hamburger = document.querySelector('.hamberger');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            if (hamburger && mobileMenu) {
-                hamburger.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    mobileMenu.classList.toggle('mobile-menu-active');
-                });
-            }
-        })();
-
         // Back to Top (guarded)
         (function () {
             const backToTop = document.querySelector('.back-to-top');
@@ -478,8 +443,13 @@
     <script src="../js/language-dropdown.js"></script>
     <script src="../js/footer.js"></script>
     <script src="../js/cursor.js"></script>
-    <script src="../js/app.js"></script>
+        <script src="../js/utils.js"></script>
+    <script src="../js/error-handler.js"></script>
+    <script src="../js/performance-patches.js"></script>
+<script src="../js/app.js"></script>
 
+    <script src="../js/floating-feedback.js"></script>
 </body>
 
 </html>
+

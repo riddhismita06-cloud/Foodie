@@ -296,44 +296,51 @@ p {
 /* ===========================
    STATS SECTION
    =========================== */
+
 .stats-section {
     max-width: 1400px;
     margin: var(--space-2xl) auto;
     padding: 0 var(--space-lg);
-    container-type: inline-size;
 }
 
 .stats-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    align-items: stretch;
 }
 
 .stat-card {
     text-align: center;
-    padding: var(--space-lg) var(--space-md);
+    padding: 40px 25px;
     background: var(--bg-secondary);
-    border-radius: var(--radius-md);
+    border-radius: 20px;
     border: 2px solid var(--border-color);
-    box-shadow: var(--shadow-strong) 8px 8px 8px, var(--shadow-strong) 8px 8px 8px inset;
-    transition: all var(--transition-slow);
-    contain: layout style paint;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.08);
+
+    transition: all 0.3s ease;
+
+    /* FIX */
+    contain: none;
 }
 
 .stat-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px);
 }
 
 .stat-number {
-    font-size: 42px;
-    font-weight: bold;
+    font-size: 52px;
+    font-weight: 700;
     color: var(--gold-finger);
-    margin-bottom: var(--space-sm);
+    margin-bottom: 12px;
 }
 
 .stat-label {
-    font-size: var(--text-base);
+    font-size: 18px;
     color: var(--text-secondary);
+    line-height: 1.5;
 }
 
 /* ===========================
@@ -389,15 +396,14 @@ p {
 .feature-card p {
     line-height: 1.6;
 }
-
 /* ===========================
    TEAM SECTION
    =========================== */
+
 .team-section {
     max-width: 1400px;
     margin: var(--space-2xl) auto;
     padding: 0 var(--space-lg);
-    container-type: inline-size;
 }
 
 .team-header {
@@ -407,7 +413,7 @@ p {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--space-md);
 }
 
@@ -417,9 +423,12 @@ p {
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
     border: 2px solid var(--border-color);
-    box-shadow: var(--shadow-strong) 8px 8px 8px, var(--shadow-strong) 8px 8px 8px inset;
+    box-shadow: var(--shadow-strong) 8px 8px 8px,
+                var(--shadow-strong) 8px 8px 8px inset;
     transition: all var(--transition-slow);
-    contain: layout style paint;
+
+    /* FIX */
+    contain: none;
 }
 
 .team-card:hover {
@@ -448,7 +457,6 @@ p {
     font-size: var(--text-sm);
     line-height: 1.6;
 }
-
 /* ===========================
    TESTIMONIALS SECTION
    =========================== */

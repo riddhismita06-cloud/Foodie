@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Foodie</title>
+    <link rel="icon" href="../imgs/favicon.webp" type="image/webp" />
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/dark-mode-icons.css" />
+    <link rel="stylesheet" href="../css/modern-design.css">
+    <link rel="stylesheet" href="../css/cursor.css">
+</head>
+<body class="profile-page">
+    <header>
+    <nav class="navbar flex between wrapper">
+        <a href="./index.html" class="logo">Foodie.</a>
+
+        <!-- DESKTOP MENU -->
+        <ul class="navList flex gap-1 between">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+        </ul>
+
+        <div class="desktop-action flex gap-1">
+            <!-- Language Selector -->
+            <div class="custom-select" id="language-custom-select">
+                <div class="selected" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="language-custom-select">
+                    English
+                </div>
+                <ul class="options" role="listbox" tabindex="-1">
+                    <li data-value="en" role="option" aria-selected="true">English</li>
+                    <li data-value="hi" role="option">हिंदी</li>
+                    <li data-value="kn" role="option">ಕನ್ನಡ</li>
+                    <li data-value="mr" role="option">मराठी</li>
+                    <li data-value="bn" role="option">বাংলা</li>
+                </ul>
+            </div>
+
+            <!-- Search Input -->
+            <form class="navbar-search" action="#" method="get">
+                <input type="text" name="search" id="navbar-search" placeholder="Search..." aria-label="Search menu items">
+                <button type="submit" id="navbar-search-btn" aria-label="Search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+
+            <!-- Theme toggle -->
+            <button class="desktop-action theme-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <!-- Cart Icon -->
+            <a href="./checkout.html" class="cart-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-value">0</span>
+            </a>
+
+            <!-- Sign-in button -->
+            <a href="./login.html" class="btn">
+                <i class="fa-solid fa-user"></i>&nbsp;Sign in
+            </a>
+
+            <!-- Hamburger -->
+            <a href="#" class="hamberger"><i class="fa-solid fa-bars"></i></a>
+        </div>
+
+        <!-- MOBILE MENU -->
+        <ul class="mobile-menu">
+            <li><a href="./index.html#home" data-i18n="nav.home">Home</a></li>
+            <li><a href="./menu.html" data-i18n="nav.menu">Menu</a></li>
+            <li><a href="./my-favorites.html" data-i18n="nav.favorites"><i class="fa-solid fa-star"></i> Favorites</a></li>
+            <li><a href="./aboutUs.html" data-i18n="nav.about">About Us</a></li>
+            <li><a href="./contactUs.html" data-i18n="nav.contact">Contact Us</a></li>
+            <li><a href="./nearbyres.html" data-i18n="nav.nearby">Nearby</a></li>
+            <li>
+                <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i><span>Dark Mode</span>
+                </button>
+            </li>
+            <li>
+                <a href="./login.html" class="btn">
+                    <i class="fa-solid fa-user"></i>&nbsp;Sign in
+                </a>
+            </li>
+        </ul>
+    </nav></header>
+    <main class="wrapper profile-main">
+        <div class="profile-container">
+            <div class="card profile-header-card">
+                <div class="profile-cover"></div>
+                <div class="profile-content">
+                    <div class="profile-avatar-wrapper">
+                        <img id="userLargeAvatar" src="../imgs/profile1.webp" alt="Profile">
+                        <button class="avatar-edit-btn"><i class="fa-solid fa-camera"></i></button>
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="userFullName">User Name</h1>
+                        <p id="userEmail">user@example.com</p>
+                        <span class="badge">Verified Foodie</span>
+                    </div>
+                    <div class="profile-cta">
+                        <button class="btn btn-outline" onclick="logoutUser(event)">Logout</button>
+                        <button class="btn" onclick="openEditModal()">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Modal -->
+            <div id="editProfileModal" class="modal">
+                <div class="modal-content card">
+                    <div class="modal-header flex between">
+                        <h3>Edit Profile</h3>
+                        <button class="close-modal" onclick="closeEditModal()">&times;</button>
+                    </div>
+                    <form onsubmit="handleProfileUpdate(event)">
+                        <div class="input-group">
+                            <label>Full Name</label>
+                            <input type="text" id="editName" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="editEmail" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="editPhone" required>
+                        </div>
+                        <button type="submit" class="btn w-full mt-1">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="profile-grid grid grid-cols-2 gap-2 mt-2">
+                <div class="card stat-card flex items-center gap-2">
+                    <div class="stat-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div>
+                        <h3 id="statOrders">0</h3>
+                        <p>Total Orders</p>
+                    </div>
+                </div>
+                <div class="card stat-card flex items-center gap-2">
+                    <div class="stat-icon"><i class="fa-solid fa-heart"></i></div>
+                    <div>
+                        <h3 id="statFavs">0</h3>
+                        <p>Favorites</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacts"></footer>
+
+    <style>
+        .profile-main { padding-top: 100px; padding-bottom: 50px; }
+        .profile-header-card { padding: 0 !important; overflow: hidden; margin-bottom: 2rem; }
+        .profile-cover { height: 160px; background: var(--premium-gradient); }
+        .profile-content { padding: 0 2rem 2rem; margin-top: -60px; display: flex; align-items: flex-end; gap: 2rem; }
+        .profile-avatar-wrapper { position: relative; width: 140px; height: 140px; }
+        .profile-avatar-wrapper img { width: 100%; height: 100%; border-radius: 50%; border: 6px solid var(--bg-secondary); background: var(--bg-secondary); object-fit: cover; }
+        .avatar-edit-btn { position: absolute; bottom: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: none; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.2); cursor: pointer; color: var(--auth-primary); }
+        .profile-info { flex: 1; padding-bottom: 10px; }
+        .profile-info h1 { margin: 0; font-size: 2.2rem; }
+        .profile-info p { margin: 5px 0; color: var(--text-secondary); }
+        .profile-cta { display: flex; gap: 10px; padding-bottom: 10px; }
+        .stat-icon { width: 60px; height: 60px; border-radius: 12px; background: rgba(255, 94, 0, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--auth-primary); }
+        .stat-card h3 { margin: 0; font-size: 1.8rem; }
+        .stat-card p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
+        .btn-outline { background: transparent !important; border: 2px solid var(--auth-primary) !important; color: var(--auth-primary) !important; }
+
+        @media (max-width: 768px) {
+            .profile-content { flex-direction: column; align-items: center; text-align: center; margin-top: -70px; }
+            .profile-info { padding-bottom: 0; }
+            .profile-cta { width: 100%; justify-content: center; }
+            .grid-cols-2 { grid-template-columns: 1fr !important; }
+        }
+        // Modal Styles
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 3000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+        .modal.active { display: flex; }
+        .modal-content { width: 100%; max-width: 450px; padding: 2rem !important; }
+        .modal-header h3 { margin: 0; }
+        .close-modal { background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-secondary); }
+        .w-full { width: 100%; }
+        .modal .input-group { margin-bottom: 1rem; }
+        .modal .input-group label { display: block; margin-bottom: 5px; font-weight: 600; }
+        .modal .input-group input { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--glass-border); background: var(--bg-primary); color: var(--text-primary); }
+    </style>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script>
+        function openEditModal() {
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            document.getElementById('editName').value = user.name || '';
+            document.getElementById('editEmail').value = user.email || '';
+            document.getElementById('editPhone').value = user.phone || '';
+            document.getElementById('editProfileModal').classList.add('active');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editProfileModal').classList.remove('active');
+        }
+
+        function handleProfileUpdate(event) {
+            event.preventDefault();
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            const oldEmail = user.email; // Store to find in database
+            
+            user.name = document.getElementById('editName').value;
+            user.email = document.getElementById('editEmail').value;
+            user.phone = document.getElementById('editPhone').value;
+            
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+            
+            // Sync with main users database
+            const users = JSON.parse(localStorage.getItem('foodie_users') || '[]');
+            const idx = users.findIndex(u => u.email === oldEmail);
+            if (idx !== -1) {
+                users[idx] = { ...users[idx], ...user };
+                localStorage.setItem('foodie_users', JSON.stringify(users));
+            }
+
+            location.reload();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('loggedInUser'));
+            if (!user) { window.location.href = './signup.html'; return; }
+            
+            // Display Info
+            document.getElementById('userFullName').textContent = user.name;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userNameVal').textContent = user.name.toLowerCase().replace(/\s/g, '_');
+            if (user.phone) {
+                document.getElementById('phoneVal').textContent = user.phone;
+            }
+            if (user.picture) {
+                document.getElementById('userLargeAvatar').src = user.picture;
+            }
+
+            // Handle Avatar Upload
+            const editBtn = document.querySelector('.avatar-edit-btn');
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+            
+            editBtn.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const base64Image = e.target.result;
+                        
+                        // Update current session
+                        const user = JSON.parse(localStorage.getItem('loggedInUser'));
+                        user.picture = base64Image;
+                        localStorage.setItem('loggedInUser', JSON.stringify(user));
+                        
+                        // Update main database
+                        const users = JSON.parse(localStorage.getItem('foodie_users') || '[]');
+                        const idx = users.findIndex(u => u.email === user.email);
+                        if (idx !== -1) {
+                            users[idx].picture = base64Image;
+                            localStorage.setItem('foodie_users', JSON.stringify(users));
+                        }
+                        
+                        location.reload();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById('statFavs').textContent = JSON.parse(localStorage.getItem('favorites') || '[]').length;
+            
+            // Sync dark mode checkbox
+            const darkToggle = document.getElementById('prefDarkMode');
+            if (darkToggle) darkToggle.checked = document.documentElement.getAttribute('data-theme') === 'dark';
+        });
+    </script>
+    <script src="../js/floating-feedback.js"></script>
+</body>
+</html>
+
+

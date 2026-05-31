@@ -14,15 +14,18 @@ class I18n {
         this.initLanguageSelector();
     }
 
-    // Corrected translation path + optimized fallback handling with error handling
     async loadTranslations(lang) {
-        // Import error handling utilities
         const {
             retry,
             NetworkError,
             showErrorToast,
             errorLogger
-        } = window.FoodieErrorHandler || {};
+        } = window.FoodieErrorHandler || { 
+            retry: async (fn) => fn(), 
+            NetworkError: Error,
+            showErrorToast: console.error,
+            errorLogger: { log: console.error }
+        };
 
         try {
             const isInsideHTML = window.location.pathname.includes("/html/");
@@ -35,7 +38,7 @@ class I18n {
                     throw new NetworkError(`Failed to load ${lang}.json: HTTP ${response.status}`);
                 }
                 return await response.json();
-            }, 2, 500); // 2 retries with 500ms delay
+            }, 2, 500);
 
             // Load English fallback if needed
             if (lang !== "en" && Object.keys(this.fallbackTranslations).length === 0) {
@@ -48,39 +51,12 @@ class I18n {
                         return await fallbackResponse.json();
                     }, 2, 500);
                 } catch (fallbackError) {
-                    errorLogger.log(fallbackError, { operation: 'loadFallbackTranslations', lang });
+                    if (errorLogger.log) errorLogger.log(fallbackError, { operation: 'loadFallbackTranslations', lang });
                     console.warn("Could not load English fallback translations:", fallbackError.message);
                 }
             }
-
-            // Load primary language with retry
-            this.translations = await retry(async () => {
-                const response = await fetch(`${basePath}${lang}.json`);
-                if (!response.ok) {
-                    throw new NetworkError(`Failed to load ${lang}.json: HTTP ${response.status}`);
-                }
-                return await response.json();
-            }, 2, 500); // 2 retries with 500ms delay
-
-            // Load English fallback if needed
-            if (lang !== "en" && Object.keys(this.fallbackTranslations).length === 0) {
-                try {
-                    this.fallbackTranslations = await retry(async () => {
-                        const fallbackResponse = await fetch(`${basePath}en.json`);
-                        if (!fallbackResponse.ok) {
-                            throw new NetworkError(`Failed to load en.json fallback: HTTP ${fallbackResponse.status}`);
-                        }
-                        return await fallbackResponse.json();
-                    }, 2, 500);
-                } catch (fallbackError) {
-                    errorLogger.log(fallbackError, { operation: 'loadFallbackTranslations', lang });
-                    console.warn("Could not load English fallback translations:", fallbackError.message);
-                }
-            }
-
         } catch (err) {
-            errorLogger.log(err, { operation: 'loadTranslations', lang });
-
+            if (errorLogger.log) errorLogger.log(err, { operation: 'loadTranslations', lang });
             console.error("Translation load error:", err);
 
             // Fallback to EN if other language fails
@@ -88,9 +64,9 @@ class I18n {
                 try {
                     await this.loadTranslations("en");
                 } catch (fallbackErr) {
-                    errorLogger.log(fallbackErr, { operation: 'loadFallbackTranslations', fallbackLang: 'en' });
+                    if (errorLogger.log) errorLogger.log(fallbackErr, { operation: 'loadFallbackTranslations', fallbackLang: 'en' });
                     console.error("Critical: Could not load any translations:", fallbackErr);
-                    showErrorToast('Failed to load language translations. Some text may appear in English.');
+                    showErrorToast(t('i18n.loadFailed', 'Failed to load language translations. Some text may appear in English.'));
                 }
             }
         }
@@ -133,7 +109,14 @@ class I18n {
             if (el.tagName === "IMG") {
                 el.alt = translated;
             } else {
-                el.textContent = translated;
+                const icon = el.querySelector('i');
+                if (icon) {
+                    // Preserve the icon and update text
+                    const iconHtml = icon.outerHTML;
+                    el.innerHTML = `${iconHtml} ${translated}`;
+                } else {
+                    el.textContent = translated;
+                }
             }
         });
 
@@ -184,3 +167,4 @@ class I18n {
 
 // Global instance
 window.i18n = new I18n();
+window.t = (key, fallback = "") => window.i18n?.t(key, fallback) || fallback || key;

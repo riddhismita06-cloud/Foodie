@@ -163,7 +163,7 @@ const handleStorageError = (operation, key, error) => {
     errorLogger.log(storageError);
     
     // Show user-friendly message
-    showErrorToast('Storage error. Your data may not be saved.');
+    showErrorToast(t('errors.storage', 'Storage error. Your data may not be saved.'));
     
     return null;
 };
@@ -180,7 +180,7 @@ const handleNetworkError = (url, error) => {
     errorLogger.log(networkError);
     
     // Show user-friendly message
-    showErrorToast('Network error. Please check your connection.');
+    showErrorToast(t('errors.network', 'Network error. Please check your connection.'));
     
     return null;
 };
@@ -229,7 +229,7 @@ const handleCartError = (operation, productId, error) => {
     
     errorLogger.log(cartError);
     
-    showErrorToast('Cart error. Please try again.');
+    showErrorToast(t('errors.cart', 'Cart error. Please try again.'));
     
     return false;
 };
@@ -481,7 +481,7 @@ window.addEventListener('error', (event) => {
     // Prevent default error handling in production
     if (!errorLogger.isDevelopment()) {
         event.preventDefault();
-        showErrorToast('An error occurred. Please refresh the page.');
+        showErrorToast(t('errors.unhandled', 'An error occurred. Please refresh the page.'));
     }
 });
 
@@ -497,7 +497,7 @@ window.addEventListener('unhandledrejection', (event) => {
     
     if (!errorLogger.isDevelopment()) {
         event.preventDefault();
-        showErrorToast('An error occurred. Please try again.');
+        showErrorToast(t('errors.promiseRejected', 'An error occurred. Please try again.'));
     }
 });
 
@@ -527,3 +527,27 @@ if (typeof module !== 'undefined' && module.exports) {
         showFieldError
     };
 }
+
+// Global Export for browser modules
+window.FoodieErrorHandler = {
+    ErrorTypes,
+    FoodieError,
+    NetworkError,
+    ValidationError,
+    StorageError,
+    errorLogger,
+    handleStorageError,
+    handleNetworkError,
+    handleValidationError,
+    handleDOMError,
+    handleCartError,
+    safeLocalStorage,
+    safeQuery,
+    safeQueryAll,
+    safeFetch,
+    safeJSONParse,
+    retry,
+    CircuitBreaker,
+    showErrorToast,
+    showFieldError
+};

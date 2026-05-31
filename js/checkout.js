@@ -174,7 +174,7 @@
       container.appendChild(warn);
     }
     if (km > 30) {
-      warn.textContent = `Note: Your address is approximately ${km.toFixed(1)} km from Nashik. Delivery availability may vary.`;
+      warn.textContent = t('checkout.zoneWarning', 'Note: Your address is approximately {distance} km from Nashik. Delivery availability may vary.').replace('{distance}', km.toFixed(1));
       warn.style.display = 'block';
     } else {
       warn.textContent = '';
@@ -231,7 +231,7 @@
         errorLogger.log(error, { operation: 'citySearch', query: q });
 
         // Show user-friendly error message
-        suggestionsEl.innerHTML = '<div class="error">Unable to search cities. Please check your connection and try again.</div>';
+        suggestionsEl.innerHTML = `<div class="error">${t('checkout.citySearch.error', 'Unable to search cities. Please check your connection and try again.')}</div>`;
         suggestionsEl.classList.add('open');
 
         // Add retry button after a short delay
@@ -240,7 +240,7 @@
         }, 1000);
 
         // Show toast notification
-        showErrorToast('City search failed. Please try again.');
+        showErrorToast(t('checkout.citySearch.failed', 'City search failed. Please try again.'));
       }
     }, 250);
 
@@ -317,9 +317,9 @@
     const validateLength = (pin) => /^\d{6}$/.test(pin);
 
     const lookupPin = debounce(async (pin) => {
-      if (!validateLength(pin)) { setError('Pincode must be 6 digits'); return; }
+      if (!validateLength(pin)) { setError(t('checkout.pin.invalidLength', 'Pincode must be 6 digits')); return; }
       try {
-        setError('Validating pincode...');
+        setError(t('checkout.pin.validating', 'Validating pincode...'));
 
         // Use retry mechanism for PIN validation
         const data = await retry(async () => {
@@ -330,9 +330,9 @@
           return await response.json();
         }, 2, 1000); // 2 retries with 1s delay
 
-        if (!Array.isArray(data) || !data[0] || data[0].Status !== 'Success') { setError('Pincode not found'); return; }
+        if (!Array.isArray(data) || !data[0] || data[0].Status !== 'Success') { setError(t('checkout.pin.notFound', 'Pincode not found')); return; }
         const postOffices = data[0].PostOffice || [];
-        if (postOffices.length === 0) { setError('Pincode not found'); return; }
+        if (postOffices.length === 0) { setError(t('checkout.pin.notFound', 'Pincode not found')); return; }
         const cityFromPin = postOffices[0].District || postOffices[0].Division || postOffices[0].Region || '';
 
         if (cityInput && !cityInput.value.trim() && cityFromPin) { cityInput.value = cityFromPin; }
@@ -346,27 +346,27 @@
             const state = (po.State || '').toLowerCase();
             return district === typed || region === typed || division === typed || state === typed || (po.Name || '').toLowerCase() === typed;
           });
-          if (!ok) { setError('Pincode does not match selected city'); return; }
+          if (!ok) { setError(t('checkout.pin.cityMismatch', 'Pincode does not match selected city')); return; }
         }
 
         clearError();
         window.__lastPinStatus = 'ok';
 
         // Show success feedback
-        showSuccessToast('Pincode validated successfully');
+        showSuccessToast(t('checkout.pin.validationSuccess', 'Pincode validated successfully'));
 
       } catch (error) {
         // Log the error
         errorLogger.log(error, { operation: 'pinValidation', pincode: pin });
 
-        setError('Unable to validate pincode. Please check your connection and try again.');
+        setError(t('checkout.pin.validationNetworkFail', 'Unable to validate pincode. Please check your connection and try again.'));
         const group = zipInput.closest('.form-group');
         if (group) {
-          showRetryButton(group, () => lookupPin(pin), 'Retry Validation');
+          showRetryButton(group, () => lookupPin(pin), t('checkout.pin.retryValidation', 'Retry Validation'));
         }
 
         // Show toast notification
-        showErrorToast('PIN validation failed. Please try again.');
+        showErrorToast(t('checkout.pin.validationFailed', 'PIN validation failed. Please try again.'));
       }
     }, 350);
 
@@ -531,7 +531,7 @@
         e.preventDefault();
         if (validateForm()) {
           if (selectedPayment !== "card") {
-            alert("Currently only Card payment is integrated.");
+            alert(t('checkout.payment.onlyCard', 'Currently only Card payment is integrated.'));
             return;
           }
           placeOrderRazorpay();
@@ -596,13 +596,13 @@
         const formGroup = phone.closest(".form-group");
         if (formGroup) formGroup.classList.add("error");
         const errorMsg = phone.nextElementSibling;
-        if (errorMsg) errorMsg.textContent = "Enter valid Indian number";
+        if (errorMsg) errorMsg.textContent = t('checkout.phone.invalid', 'Enter valid Indian number');
         isValid = false;
       } else {
         const formGroup = phone.closest(".form-group");
         if (formGroup) formGroup.classList.remove("error");
         const errorMsg = phone.nextElementSibling;
-        if (errorMsg) errorMsg.textContent = "Please enter a valid phone number";
+        if (errorMsg) errorMsg.textContent = t('checkout.phone.invalidFormat', 'Please enter a valid phone number');
       }
     }
 
@@ -670,7 +670,7 @@
       rzp.open();
     } else {
       console.error("Razorpay not loaded");
-      alert("Payment system is not available. Please refresh the page.");
+      alert(t('checkout.payment.unavailable', 'Payment system is not available. Please refresh the page.'));
     }
   }
 
