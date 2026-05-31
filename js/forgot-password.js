@@ -97,6 +97,36 @@ document.addEventListener('DOMContentLoaded', () => {
     return false;
   }
 }
+  function setupResendButton(email) {
+  const btn = document.getElementById('resendBtn');
+  if (!btn) return;
+
+  const fresh = btn.cloneNode(true);
+  btn.parentNode.replaceChild(fresh, btn);
+
+  fresh.addEventListener('click', async () => {
+    fresh.disabled = true;
+
+    const success = await sendResetEmail(email);
+    if (success) {
+      let seconds = 30;
+      fresh.textContent = `Resend in ${seconds}s`;
+
+      const interval = setInterval(() => {
+        seconds--;
+        fresh.textContent = `Resend in ${seconds}s`;
+
+        if (seconds <= 0) {
+          clearInterval(interval);
+          fresh.disabled = false;
+          fresh.textContent = 'Resend email';
+        }
+      }, 1000);
+    } else {
+      fresh.disabled = false;
+    }
+  });
+}
 
   /* =========================
      SWITCH BACK TO FORM
