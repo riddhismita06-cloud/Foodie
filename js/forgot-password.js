@@ -66,11 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Show success message
-    document.getElementById('emailForm').classList.remove('active');
-    document.getElementById('successMessage').classList.add('active');
-    document.getElementById('sentEmail').textContent = email;
+    sendResetEmail(email).then(success => {
+      if (success) {
+        document.getElementById('emailForm').classList.remove('active');
+        document.getElementById('successMessage').classList.add('active');
+        document.getElementById('sentEmail').textContent = email;
 
-    setupResendButton(email); // email passed directly, no localStorage
+        setupResendButton(email); // email passed directly, no localStorage
+        }
+    });
   }
 
   /* =========================
