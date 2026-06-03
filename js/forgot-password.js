@@ -90,24 +90,67 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Show success message
-    document.getElementById('emailForm').classList.remove('active');
-    document.getElementById('successMessage').classList.add('active');
-    document.getElementById('sentEmail').textContent = email;
+    sendResetEmail(email).then(success => {
+      if (success) {
+        document.getElementById('emailForm').classList.remove('active');
+        document.getElementById('successMessage').classList.add('active');
+        document.getElementById('sentEmail').textContent = email;
 
-    // Save email for resend
-    localStorage.setItem('resetEmail', email);
+        setupResendButton(email); // email passed directly, no localStorage
+        }
+    });
   }
 
   /* =========================
      RESEND EMAIL
   ========================== */
 
-  function resendEmail() {
-    const email = localStorage.getItem('resetEmail');
-    if (email) {
-      alert(t('forgotPassword.resetLinkSent', 'Reset link resent to {email}').replace('{email}', email));
+  async function sendResetEmail(email) {
+    try {
+      const response = await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!response.ok) throw new Error('Request failed');
+      return true;
+    } catch (err) {
+      console.error('Failed to send reset email:', err);
+      alert(t('forgotPassword.requestFailed', 'Something went wrong. Please try again.'));
+      return false;
     }
   }
+  
+  function setupResendButton(email) {
+  const btn = document.getElementById('resendBtn');
+  if (!btn) return;
+
+  const fresh = btn.cloneNode(true);
+  btn.parentNode.replaceChild(fresh, btn);
+
+  fresh.addEventListener('click', async () => {
+    fresh.disabled = true;
+
+    const success = await sendResetEmail(email);
+    if (success) {
+      let seconds = 30;
+      fresh.textContent = `Resend in ${seconds}s`;
+
+      const interval = setInterval(() => {
+        seconds--;
+        fresh.textContent = `Resend in ${seconds}s`;
+
+        if (seconds <= 0) {
+          clearInterval(interval);
+          fresh.disabled = false;
+          fresh.textContent = 'Resend email';
+        }
+      }, 1000);
+    } else {
+      fresh.disabled = false;
+    }
+  });
+}
 
   /* =========================
      SWITCH BACK TO FORM
@@ -123,6 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Expose functions globally
   window.handleForgotPassword = handleForgotPassword;
-  window.resendEmail = resendEmail;
   window.switchToEmailForm = switchToEmailForm;
 });
